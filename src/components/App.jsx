@@ -4,7 +4,6 @@ import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
 
 import { LoginPage } from 'pages/LoginPage/LoginPage';
 
-
 export const App = () => {
   return (
     <BrowserRouter>
