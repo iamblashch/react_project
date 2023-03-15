@@ -1,0 +1,30 @@
+.section{
+    padding-top: 32px;
+    padding-bottom: 36px;
+
+
+    @media screen and (min-width: 768px) {
+        padding-top: 60px;
+        padding-bottom: 48px;
+    }
+
+    @media screem and (min-width: 1280px) {
+        padding-top: 52px;
+        padding-bottom: 52px;
+    }
+}
+
+.bigGroupWrapper {
+    display: none;
+    
+        @media screen and (min-width: 768px) {
+            display: block;
+        }
+}
+.img {
+    width: 248px;
+    height: 250px;
+}
+.title {}
+.formWrapper {}
+.form{}
