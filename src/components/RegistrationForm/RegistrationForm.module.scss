@@ -1,0 +1,59 @@
+
+.RegisterForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+@media screen and (min-width: 768px) {
+        width: 410px;
+    }
+
+}
+.Title {
+display: flex;
+align-items: center;
+gap: 15px;
+& h2 {
+font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 45px;
+}
+}
+
+
+.RegisterForm::placeholder {
+  color: transparent;
+}
+
+.btnRegister,
+.btnLogin {
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+  width: 280px;
+  height: 50px;
+  border-radius: 20px;
+  border: none;
+}
+
+.btnRegister {
+  margin: 20px 10px;
+  background-color: #24cca7;
+  color: white;
+}
+.btnLogin {
+  border: 1px solid #4a56e2;
+  color: #4a56e2;
+}
+
+.Icons {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  fill: grey;
+}

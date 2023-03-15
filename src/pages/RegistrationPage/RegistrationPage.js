@@ -1,6 +1,6 @@
 import registrationImg from '../../assets/images/registration-img.png'
 import styles from './RegistrationPage.module.scss'
-
+import RegistrationForm from "../../components/RegistrationForm/RegistrationForm"
 const RegistrationPage = () => {
     return (
         <>
@@ -14,7 +14,9 @@ const RegistrationPage = () => {
                             </div>
                         </div>
                         <div className={styles.formWrapper}>
-                            <div className={styles.form}></div>
+                            <div className={styles.form}>
+                                 <RegistrationForm/>
+                            </div>
                         </div>
                     </div>
                 </div>
