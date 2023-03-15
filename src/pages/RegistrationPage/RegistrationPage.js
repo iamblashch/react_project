@@ -1,5 +1,4 @@
 import registrationImg from '../../assets/images/registration-img.png'
-// import s from '../../stylesheet/main.scss'
 import styles from './RegistrationPage.module.scss'
 
 const RegistrationPage = () => {
@@ -7,12 +6,16 @@ const RegistrationPage = () => {
         <>
             <section className={styles.section}>
                 <div className='container'>
-                    <div className={styles.bigGroupWrapper}>
-                        <img src={registrationImg} alt='girl' className={styles.img} />
-                        <h2 className={styles.title}>Finance App</h2>
-                    </div>
-                    <div className={styles.formWrapper}>
-                        <div className={styles.form}></div>
+                    <div className={styles.commonWrapper}>
+                        <div className={styles.bigGroupWrapper}>
+                            <div className={styles.wrapper}>
+                                <img src={registrationImg} alt='girl' className={styles.img} />
+                                <h2 className={styles.title}>Finance App</h2>
+                            </div>
+                        </div>
+                        <div className={styles.formWrapper}>
+                            <div className={styles.form}></div>
+                        </div>
                     </div>
                 </div>
             </section>
