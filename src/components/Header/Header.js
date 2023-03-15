@@ -37,7 +37,7 @@ export const Header = () => {
             value={{ className: 'global-class-name', size: '24px' }}
           >
             <button className={s.logout__button} type="button">
-              <RxExit />
+              <RxExit value={{ className: 'global-class-name', size: '24px' }} />
               <span className={s.logout__text}>Exit</span>
             </button>
           </IconContext.Provider>
