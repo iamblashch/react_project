@@ -34,10 +34,10 @@ export const Header = () => {
             </IconContext.Provider>
           </div>
           <IconContext.Provider
-            value={{ className: 'global-class-name', size: '24px' }}
+            value={{ className: 'global-class-name', size: '18px' }}
           >
             <button className={s.logout__button} type="button">
-              <RxExit value={{ className: 'global-class-name', size: '24px' }} />
+              <RxExit />
               <span className={s.logout__text}>Exit</span>
             </button>
           </IconContext.Provider>

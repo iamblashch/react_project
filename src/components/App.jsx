@@ -9,7 +9,7 @@ export const App = () => {
   return (
     <BrowserRouter>
       <Header />
-      <RegistrationPage />
+      <RegistrationPage /> 
       <LoginPage />
     </BrowserRouter>
   );
