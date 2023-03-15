@@ -8,29 +8,23 @@ import styles from './Navigation.module.scss';
 
 const Navigation = () => {
     return (
-    <div className='container'>
+    <div className={styles.centered}>
         <div className={styles.mobileNav}>
         <nav className={styles.nav}>
             <ul className={styles.list}>
                 <li className={styles.item}>
                     <NavLink to='/home' className={styles.link}>
-                        <div className={styles.favWrapper}>
                             <AiFillHome style={{ width: "38", height: "38", color: "white" }}/>
-                        </div>
                     </NavLink>
                 </li>
                 <li className={styles.item}>
                     <NavLink to='/diagram' className={styles.link}>
-                        <div className={styles.favWrapper}>
                             <MdShowChart style={{ width: "38", height: "38", color: "white" }}/>
-                        </div>
                     </NavLink>
                 </li>
                 <li className={styles.item}>
                     <NavLink to='/currency' className={styles.link}>
-                        <div className={styles.favWrapper}>
                             <FaDollarSign style={{ width: "38", height: "38", color: "white" }}/>
-                        </div>
                     </NavLink>
                 </li>
             </ul>
@@ -42,17 +36,17 @@ const Navigation = () => {
                 <li className={styles.item}>
                     <NavLink to='/home' className={styles.link}>
                         <div className={styles.favWrapper}>
-                            <AiFillHome style={{ width: "18", height: "18", color: "white" }}/>
-                        </div>
-                        Home
+                            <AiFillHome style={{ width: "12", height: "11", color: "white" }}/>
+                        </div>        
+                        <p className={styles.link__text}>Home</p>
                     </NavLink>
                 </li>
                 <li className={styles.item}>
                     <NavLink to='/diagram' className={styles.link}>
                         <div className={styles.favWrapper}>
-                            <MdShowChart style={{ width: "18", height: "18", color: "white" }}/>
+                            <MdShowChart style={{ width: "12", height: "11", color: "white" }}/>
                         </div>
-                        Statistics
+                        <p className={styles.link__text}>Statistics</p>
                     </NavLink>
                 </li>
             </ul>
