@@ -1,5 +1,9 @@
 import styles from '../LoginPage/LoginPage.module.scss';
 
 export const LoginPage = () => {
-  return <main className={styles.main}></main>;
+  return (
+    <div className={styles.loginPage}>
+      <img src="" alt="" />
+    </div>
+  );
 };
