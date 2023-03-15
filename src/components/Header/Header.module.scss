@@ -1,11 +1,19 @@
 .container {
-  width: 100%;
+  width: 320px;
   padding-left: 20px;
   padding-right: 20px;
   margin: 0 auto;
-  
+  @media screen and (min-width: 479px) {
+    width: 480px;
+  }
+  @media screen and (min-width: 767px) {
+    width: 768px;
+  }
+  @media screen and (min-width: 1279px) {
+    width: 1280px;
+  }
 }
-.header{
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -13,58 +21,66 @@
   padding-left: 0px;
   padding-right: 0px;
 }
-.link{
-   display: flex;
-   &__logo{
-   width: 30px;
-   height: 30px;
+.link {
+  display: flex;
+  &__logo {
+    width: 30px;
+    height: 30px;
+    @media screen and (min-width: 479px) {
+      width: 40px;
+      height: 40px;
+    }
+  }
+  &__title {
+    font-family: 'Poppins';
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.5;
+    margin-left: 15px;
+    transition: color 450ms ease;
+  }
 }
-   &__title{
-      font-family: 'Poppins';
-      font-weight: 700;
-      font-size: 22px;
-      line-height: 1.5;
-      margin-left: 15px;
-      transition: color 450ms ease;  
-   }
+.user {
+  display: flex;
+  align-items: center;
+  &__name {
+    margin-right: 12px;
+    padding-right: 12px;
+    border-right: 1px solid;
+    font-weight: 400;
+    font-size: 18px;
+    margin-left: 5px;
+    line-height: 1.5;
+    color: #bdbdbd;
+  }
 }
-.user{
-   display: flex;
-   align-items: center;
-   &__name{
-   margin-right: 12px;
-   padding-right: 12px;
-   border-right: 1px solid;
-   font-weight: 400;
-   font-size: 18px;
-   margin-left: 5px;
-   line-height: 1.5;
-   color: #BDBDBD;
-}
-}
-.logout{
-   display: flex;
-   &__button{
+.logout {
+  display: flex;
+  &__button {
     width: 18px;
     height: 18px;
-   display: flex;
-   border: none;
-   background-color: transparent;
-   color: rgba(189, 189, 189, 1);
-   transition: color 250ms ease;
-   }
-   &__text{
-      display:none; 
-      font-weight: 400;
-      font-size: 18px;
-      line-height: 1.5;
-      margin-left: 8px;
-      color: var(--secondary-text-cl);
-   transition: color 250ms ease;
-
-   }
+    display: flex;
+    border: none;
+    background-color: transparent;
+    color: rgba(189, 189, 189, 1);
+    transition: color 250ms ease;
+  }
+  &__text {
+    display: none;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5;
+    margin-left: 8px;
+    color: var(--secondary-text-cl);
+    transition: color 250ms ease;
+  }
 }
 
-.wrapper{
-   display: flex;
+.wrapper {
+  display: flex;
+}
+.icon {
+  @media screen and (max-width: 479px) {
+    display: none;
+  }
 }
