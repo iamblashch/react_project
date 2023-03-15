@@ -1,1 +1,23 @@
-/*# sourceMappingURL=Navigation.module.css.map */
+@media screen and (min-width: 768px) {
+  .mobileNav {
+    display: none;
+  }
+}
+
+.tabletNav {
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  .tabletNav {
+    display: block;
+  }
+}
+
+.link {
+  display: block;
+  background-color: #6E78E8;
+}
+
+.link:global(.active) {
+  background-color: var(--accent-blue);
+}/*# sourceMappingURL=Navigation.module.css.map */

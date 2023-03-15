@@ -1,1 +1,1 @@
-{"version":3,"sources":[],"names":[],"mappings":"","file":"Navigation.module.css"}
+{"version":3,"sources":["Navigation.module.scss","Navigation.module.css"],"names":[],"mappings":"AACI;EADJ;IAEQ,aAAA;ECCN;AACF;;ADEA;EACI,aAAA;ACCJ;ADCI;EAHJ;IAIQ,cAAA;ECEN;AACF;;ADOA;EACI,cAAA;EACA,yBAAA;ACJJ;;ADOA;EACI,oCAAA;ACJJ","file":"Navigation.module.css"}
