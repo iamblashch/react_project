@@ -8,6 +8,6 @@ export const App = () => {
       <Header />
       <RegistrationPage />
     </BrowserRouter>
-
+)}
 
 
