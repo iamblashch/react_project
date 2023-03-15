@@ -1,9 +1,12 @@
-$accent-green: #24CCA7;
-$accent-blue: #4A56E2;
-$accent-pink: #FF6596;
-$black-color: #000000;
-$white-color: #FFFFFF;
-$grey-color: #A6A6A6;
+:root {
+    --accent-green: #24CCA7;
+    --accent-blue: #4A56E2;
+    --accent-pink: #FF6596;
+    --black-color: #000000;
+    --white-color: #FFFFFF;
+    --grey-color: #A6A6A6;
 
-$bcg-pink-grad-color: #FFD8D0;
-$bcg-blue-grad-color: #C5BAFF;
+    --bcg-main-color: rgba(241, 243, 248, 1)
+    --bcg-pink-grad-color: #FFD8D0;
+    --bcg-blue-grad-color: #C5BAFF;
+}
