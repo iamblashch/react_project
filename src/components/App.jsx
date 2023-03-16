@@ -1,13 +1,17 @@
 import { BrowserRouter } from 'react-router-dom';
-// import { Header } from './Header/Header';
 import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
-// import { LoginPage } from 'pages/LoginPage/LoginPage';
+import { PersistGate } from 'redux-persist/integration/react';
+import { LoginPage } from 'pages/LoginPage/LoginPage';
+import { Provider } from 'react-redux';
+import { store, persistor } from '../redux/store';
 
 export const App = () => {
   return (
-    <BrowserRouter basename="/react_project">
-      {/* <Header /> */}
-      <RegistrationPage />
-    </BrowserRouter>
-  );
-};
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <BrowserRouter>
+          <RegistrationPage />
+          <LoginPage />
+        </BrowserRouter>
+      </PersistGate>
+    </Provider>
