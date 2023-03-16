@@ -1,11 +1,12 @@
 @import "../../stylesheet/base";
 @import "../../stylesheet/fonts";
 @import "../../stylesheet/vars";
+@import "../../stylesheet/mixins";
 
 .overlay {
   align-items: start;
   margin-top: 60px;
-  background-color: #fff;
+  background-color: $white-color;
   position: fixed;
   top: 0;
   left: 0;

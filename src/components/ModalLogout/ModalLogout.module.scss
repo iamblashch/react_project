@@ -1,6 +1,7 @@
 @import "../../stylesheet/base";
 @import "../../stylesheet/fonts";
 @import "../../stylesheet/vars";
+@import "../../stylesheet/mixins";
 
 .logout{
     max-width: 540px;
@@ -37,14 +38,14 @@
  border: none;
  padding: 13px 65px;
  border-radius: 20px;
- background-color: var(--main-bg-cl);
- border: 1px solid var(--accent-active-cl);
- color: var(--accent-active-cl);
+ background-color: $white-color;
+ border: 1px solid $accent-blue;
+ color: $accent-blue;
  transition: all 250ms ease;
        &:hover,
        &:focus{
-          background-color: var(--income-cl);
-          color: var(--main-bg-cl);
+          background-color: $accent-pink;
+          color:  #FFFFFF;
           border: 1px solid transparent;
        }
        &:first-child{
