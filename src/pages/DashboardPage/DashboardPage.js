@@ -12,10 +12,14 @@ export const DashboardPage = () => {
         <div className={css.container}>
           <div className={css.commonWrapper}>
             <div className={css.wrapper}>
-              <Navigation />
-              <Balance />
+              <div>
+                <Navigation />
+                <Balance />
+              </div>
+
               <div className={css.val}></div>
             </div>
+
             <div className={css.tab}>
               <table className={css.table}>
                 <thead className={css.tableHead}>
@@ -33,10 +37,9 @@ export const DashboardPage = () => {
                       Comment
                     </th>
                     <th className={css.tableHeader} scope="col">
-                      Amount
+                      Sum
                     </th>
                     <th className={css.tableHeader} scope="col">
-                      Balance
                     </th>
                   </tr>
                 </thead>
