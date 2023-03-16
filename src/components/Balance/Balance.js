@@ -5,7 +5,7 @@ export const Balance = () => {
     <div className={styles.balance}>
       <p className={styles.title}>Your balance</p>
       <p className={styles.sum}>
-        <span>₴</span> 24 000.00
+        <span>&#8372;</span> 24 000.00
       </p>
     </div>
   );
