@@ -4,7 +4,7 @@
     margin: 20px 0;
 
     & input {
-        font-size: 18px;
+        font-size: 16px;
         width: 100%;
         border: none;
         border-bottom: 2px solid #ccc;
@@ -18,7 +18,7 @@
         font-family: 'Circe';
         font-style: normal;
         font-weight: 400;
-        font-size: 18px;
+        font-size: 16px;
         line-height: 27px;
         position: absolute;
         top: 5px;
@@ -30,7 +30,7 @@
 }
 
 .inputContainer input {
-    font-size: 18px;
+    font-size: 16px;
     width: 100%;
     border: none;
     border-bottom: 2px solid #ccc;
@@ -44,10 +44,10 @@
     font-family: 'Circe';
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 27px;
     position: absolute;
-    top: 5px;
+    top: 0;
     left: 30px;
     color: #ccc;
     transition: top 0.3s ease;
@@ -81,8 +81,6 @@ background-color: red;
     transform: scaleX(1);
 }
 .inputContainer input:-webkit-autofill {
-
     -webkit-box-shadow: transparent;
     background-color: transparent;
-    // transition: tran;
 }
