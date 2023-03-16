@@ -8,11 +8,18 @@ import Navigation from "./Navigation/Navigation";
 
 export const App = () => {
   return (
+<<<<<<< Updated upstream
    <>
     <BrowserRouter basename="/react_project">
      <Header />
       <RegistrationPage />
       <LoginPage />
     <Navigation />
+=======
+    <BrowserRouter>
+      {/* <Header /> */}
+      <RegistrationPage />
+      {/* <LoginPage /> */}
+>>>>>>> Stashed changes
     </BrowserRouter>
    </>
