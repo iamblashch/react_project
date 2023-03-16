@@ -1,31 +1,27 @@
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
-// import { Header } from './Header/Header';
-// import { LoginPage } from 'pages/LoginPage/LoginPage';
-import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
+
+// import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
 import { PersistGate } from 'redux-persist/integration/react';
 import { LoginPage } from 'pages/LoginPage/LoginPage';
 import { Provider } from 'react-redux';
 import { store, persistor } from '../redux/store';
+import Loader from './Loader/Loader';
 
-export const App = () => {
-  return (
-    <BrowserRouter basename="/react_project">
-      {/* <Header /> */}
-      <RegistrationPage />
-      {/* </BrowserRouter> */}
-    </Suspense>
-  );
-};
-
+const RegistrationPage = lazy(() =>
+  import('pages/RegistrationPage/RegistrationPage')
+);
 
 export const App = () => {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter>
-          <RegistrationPage />
-          <LoginPage />
+        <BrowserRouter basename="/react_project">
+          <Suspense fallback={<Loader />}>
+            <RegistrationPage />
+          </Suspense>
         </BrowserRouter>
       </PersistGate>
     </Provider>
+  );
+};
