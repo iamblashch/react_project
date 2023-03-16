@@ -7,7 +7,7 @@ const initialState = {
     token: "",
     isLogin: false,
     loading: false,
-    error: null,   
+    error: null,
 } 
 
 const authSlice = createSlice({
@@ -26,7 +26,7 @@ const authSlice = createSlice({
         })
         .addCase(register.rejected, (state, {payload}) => {
             state.loading = false;
-            state.error = payload;
+            state.error = payload.message;
         })
         .addCase(login.pending, state => {
             state.loading = true;

@@ -1,6 +1,6 @@
 ///REACT
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 ///STYLE
 import Style from './RegistrationForm.module.scss';
 ///COMPONENT
@@ -17,15 +17,17 @@ import { MdEmail } from 'react-icons/md';
 import { AiFillLock } from 'react-icons/ai';
 import { FaUser } from 'react-icons/fa';
 ///
+import {getAuth} from "../../redux/auth/auth-selectors"
+
 const RegistrationForm = () => {
 
-  const [stateRegistr, setState] = useState(initialState);
-  const [validate, setValidate] = useState({});
+  const [stateRegistr, setStateRegistr] = useState(initialState);
   const dispatch = useDispatch();
-
+  // const { error } = useSelector(getAuth)
+  
   const hendleChange = e => {
     const { name, value } = e.target;
-    setState(prevState => ({
+    setStateRegistr(prevState => ({
       ...prevState,
       [name]: value,
     }));
@@ -33,28 +35,15 @@ const RegistrationForm = () => {
 
   const hendlSubmit = e => {
     e.preventDefault();
-    if (stateRegistr.password !== stateRegistr.confirmPassword) {
-      alert(`Enter the same passwords`);
-      return;
-    } else if (!validateEmail(stateRegistr.email)) {
-      setValidate({ email: false });
-      alert('Email is not valid');
-      return;
-    } else {
-      const payload = {
-        email: stateRegistr.email,
-        password: stateRegistr.password,
-        username: stateRegistr.username,
-      };
-      dispatch(register(payload));
-      console.log(payload);
-    }
+    const payload = {
+      username: stateRegistr.username,
+      email: stateRegistr.email,
+      password: stateRegistr.password,
+    };
+    dispatch(register(payload));
+    
   };
 
-  const validateEmail = email => {
-    const validate = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
-    return validate.test(String(email).toLowerCase());
-  };
   return (
     <>
       <Logo />
