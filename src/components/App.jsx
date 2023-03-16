@@ -1,13 +1,20 @@
 import { BrowserRouter } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
 // import { Header } from './Header/Header';
-import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
 // import { LoginPage } from 'pages/LoginPage/LoginPage';
+import Loader from './Loader/Loader';
+
+const RegistrationPage = lazy(() =>
+  import('pages/RegistrationPage/RegistrationPage')
+);
 
 export const App = () => {
   return (
-    <BrowserRouter basename="/react_project">
+    <Suspense fallback={<Loader />}>
+      {/* <BrowserRouter basename="/react_project"> */}
       {/* <Header /> */}
       <RegistrationPage />
-    </BrowserRouter>
+      {/* </BrowserRouter> */}
+    </Suspense>
   );
 };
