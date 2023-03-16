@@ -7,7 +7,7 @@ import Loader from './Loader/Loader';
 import { PersistGate } from 'redux-persist/integration/react';
 
 // import { LoginPage } from 'pages/LoginPage/LoginPage';
-import { DashboardPage } from 'pages/DashboardPage/DashboardPage';
+// import { DashboardPage } from 'pages/DashboardPage/DashboardPage';
 
 const RegistrationPage = lazy(() =>
   import('pages/RegistrationPage/RegistrationPage')
@@ -20,7 +20,7 @@ export const App = () => {
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter basename="/react_project">
           <Suspense fallback={<Loader />}>
-            <DashboardPage />
+            <RegistrationPage />
           </Suspense>
         </BrowserRouter>
       </PersistGate>
