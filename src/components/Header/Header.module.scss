@@ -1,4 +1,4 @@
-@import "../../stylesheet/vars";
+
 .container {
   width: 320px;
   padding-left: 20px;
@@ -71,11 +71,11 @@
     transition: color 250ms ease;
     &:hover,
     &:focus{
-       color:var(--accent-pink);
+       color: FF6596;
     }
     &:hover span,
     &:focus span{
-    color: var(--accent-pink);
+    color: FF6596;
     }
   }
   &__text {

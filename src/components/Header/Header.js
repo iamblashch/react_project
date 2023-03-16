@@ -1,21 +1,34 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+
 import { Logo } from './Logo';
 import { RxExit } from 'react-icons/rx';
 import { IconContext } from 'react-icons';
 import { FaUser } from 'react-icons/fa';
-import s from './Header.module.scss';
+
+import ModalLogout from '../ModalLogout/ModalLogout';
+import { toggleModalLogout } from '../../redux/modal/modalSlice';
+import  globalSelectors  from '../../redux/modal/modal-selectors';
+
+import css from './Header.module.scss';
 
 export const Header = () => {
+  const modalOpen = useSelector(globalSelectors.getIsModalLogout);
+  const dispatch = useDispatch();
+  const isOpenModal = () => {
+    dispatch(toggleModalLogout());
+  };
+
   return (
-    <header className={s.container}>
-      <section className={s.header}>
-        <Link to="/home" className={s.link}>
-          <Logo svg={s.link__logo} />
-          <p className={s.link__title}>Wallet</p>
+    <header className={css.container}>
+      <section className={css.header}>
+        <Link to="/home" className={css.link}>
+          <Logo svg={css.link__logo} />
+          <p className={css.link__title}>Wallet</p>
         </Link>
-        <div className={s.wrapper}>
-          <div className={s.user}>
+        <div className={css.wrapper}>
+          <div className={css.user}>
             <IconContext.Provider
               value={{
                 color: '#bdbdbd',
@@ -23,25 +36,28 @@ export const Header = () => {
                 size: '18px',
               }}
             >
-              <div className={s.icon}>
-                <FaUser value={{
-                color: '#bdbdbd',
-                className: 'global-class-name',
-                size: '18px',
-              }} />
+              <div className={css.icon}>
+                <FaUser
+                  value={{
+                    color: '#bdbdbd',
+                    className: 'global-class-name',
+                    size: '18px',
+                  }}
+                />
               </div>
-              <span className={s.user__name}>name</span>
+              <span className={css.user__name}>name</span>
             </IconContext.Provider>
           </div>
           <IconContext.Provider
             value={{ className: 'global-class-name', size: '18px' }}
           >
-            <button className={s.logout__button} type="button">
+            <button className={css.logout__button} type="button" onClick={isOpenModal}>
               <RxExit />
-              <span className={s.logout__text}>Exit</span>
+              <span className={css.logout__text}>Exit</span>
             </button>
           </IconContext.Provider>
         </div>
+        {modalOpen && <ModalLogout />}
       </section>
     </header>
   );
