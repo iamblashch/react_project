@@ -1,3 +1,4 @@
+
 .container {
   width: 320px;
   padding-left: 20px;
@@ -38,6 +39,11 @@
     line-height: 1.5;
     margin-left: 15px;
     transition: color 450ms ease;
+    @media screen and (min-width: 479px) {
+      margin-left: 20px;
+      font-size: 30px;
+      line-height: 1.5;
+    }
   }
 }
 .user {
@@ -57,13 +63,20 @@
 .logout {
   display: flex;
   &__button {
-    width: 18px;
-    height: 18px;
     display: flex;
+    align-items: center;
     border: none;
     background-color: transparent;
     color: rgba(189, 189, 189, 1);
     transition: color 250ms ease;
+    &:hover,
+    &:focus{
+       color: FF6596;
+    }
+    &:hover span,
+    &:focus span{
+    color: FF6596;
+    }
   }
   &__text {
     display: none;
@@ -71,8 +84,11 @@
     font-size: 18px;
     line-height: 1.5;
     margin-left: 8px;
-    color: var(--secondary-text-cl);
+    color: var();
     transition: color 250ms ease;
+    @media screen and (min-width: 479px) {
+     display: block;
+    }
   }
 }
 
@@ -84,4 +100,3 @@
     display: none;
   }
 }
-
