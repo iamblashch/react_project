@@ -1,0 +1,28 @@
+.btnRegister,
+.btnLogin {
+    font-family: 'Circe';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    width: 280px;
+    height: 50px;
+    border-radius: 20px;
+    border: none;
+    letter-spacing: 0.1em;
+}
+
+.btnRegister {
+    margin: 20px 10px;
+    background-color: #24cca7;
+    color: white;
+}
+
+.btnLogin {
+    border: 1px solid #4a56e2;
+    color: #4a56e2;
+    margin-bottom: 6px;
+    @media screen and (min-width: 768px) {
+    margin-bottom: 36px;
+    }
+}
