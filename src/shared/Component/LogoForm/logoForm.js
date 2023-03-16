@@ -1,4 +1,4 @@
-import Style from './RegistrationForm.module.scss';
+import Style from './LogoForm.module.scss';
 export const Logo = () => {
 return (
 <div className={Style.Title}>
