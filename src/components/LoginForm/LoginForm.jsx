@@ -26,6 +26,7 @@ const hendleChange = e => {
    e.preventDefault();
    dispatch(login(stateLogin));
    setSateLogin({email:'', password:''})
+
   }
   return (
     <>

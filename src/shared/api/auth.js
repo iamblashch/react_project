@@ -17,8 +17,8 @@ export const register = async (payload) => {
     setToken(result.token);
     console.log(result)
     return result
-    
 }
+
 export const login = async (data)=> {
     const {data: result} = await instance.post("/api/auth/sign-in", data);
     setToken(result.token);

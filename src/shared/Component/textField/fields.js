@@ -9,7 +9,7 @@ const fields = {
   password: {
     label: 'Password',
     name: 'password',
-    type: 'password',
+    type: 'text',
     required: true,
   },
   confirmPassword: {
