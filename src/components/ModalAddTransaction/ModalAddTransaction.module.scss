@@ -1,6 +1,8 @@
 @import "../../stylesheet/base";
 @import "../../stylesheet/fonts";
 @import "../../stylesheet/vars";
+@import "../../stylesheet/mixins";
+
 .transaction {
     padding: 20px 0px;
     @include mq(mobile) {
@@ -73,7 +75,7 @@
       top: -3px;
       width: 44px;
       height: 44px;
-      background-color: var(--expense-cl);
+      background-color:$accent-pink;
       border-radius: 50%;
       box-shadow: 0px 6px 15px rgba(255, 101, 150, 0.5);
       transition: transform 250ms ease;
@@ -84,7 +86,7 @@
       background-image: url("../Icon/plus.svg");
       background-repeat: no-repeat;
       background-position: center;
-      background-color: var(--income-cl);
+      background-color: $accent-pink;
       box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
       transform: translateX(0);
     }
@@ -100,15 +102,15 @@
       font-weight: 700;
       font-size: 16px;
       line-height: 1.5;
-      color: var(--secondary-text-cl);
+      color: $secondary-bg-cl;
       transition: all 250ms ease;
     }
     &Checked {
       &.checkboxIncome {
-        color: var(--income-cl);
+        color:$accent-green;
       }
       &.checkboxExpense {
-        color: var(--expense-cl);
+        color: $accent-pink;
       }
     }
   }
@@ -150,7 +152,7 @@
       font-weight: 400;
       font-size: 18px;
       text-align: left;
-      color: var(--secondary-text-cl);
+      color: $grey-color;
       @include mq(mobile) {
         text-align: center;
       }
@@ -164,7 +166,7 @@
       }
     }
     &Error {
-      color: var(--expense-cl);
+      color: $accent-pink;
       position: absolute;
       top: 35px;
     }
@@ -198,7 +200,7 @@
       height: 24px;
       top: 2px;
       right: 10px;
-      color: var(--accent-active-cl);
+      color:$accent-blue;
       pointer-events: none;
       @include mq(mobile) {
         right: 5px;
@@ -210,7 +212,7 @@
     margin-bottom: 40px;
     min-width: 280px;
     height: 32px;
-    color: var(--main-text-cl);
+    color: $black-color;
     font-family: "Circe", sans-serif;
     font-size: 18px;
     line-height: 1.5;
@@ -225,7 +227,7 @@
       width: 400px;
     }
     &::placeholder {
-      color: var(--secondary-text-cl);
+      color: $grey-color;
     }
   
     @include mq(tablet) {
@@ -240,7 +242,7 @@
   
     }
     &Error{
-          color: var(--expense-cl);
+          color: $accent-pink;
       position: absolute;
       bottom:180px;
       @include mq(mobile) {
@@ -270,12 +272,12 @@
     height: 50px;
     width: 300px;
     border-radius: 20px;
-    color: var(--main-bg-cl);
-    background-color: var(--income-cl);
+    color: $white-color;
+    background-color: $accent-green;
     transition: all 250ms ease;
     &:hover,
     &:focus {
-      background-color: var(--income-hover-cl);
+      background-color: $income-hover-cl;
     }
     &:first-child {
       margin-bottom: 20px;
@@ -294,14 +296,14 @@
     height: 50px;
     width: 300px;
     border-radius: 20px;
-    background-color: var(--main-bg-cl);
-    border: 1px solid var(--accent-active-cl);
-    color: var(--accent-active-cl);
+    background-color: $white-color;
+    border: 1px solid $accent-blue;
+    color: $accent-blue;
     transition: all 250ms ease;
     &:hover,
     &:focus {
-      background-color: var(--income-hover-cl);
-      color: var(--main-bg-cl);
+      background-color:$income-hover-cl;
+      color: $white-color;
       border: 1px solid transparent;
     }
     &:first-child {
@@ -331,7 +333,7 @@
     &Error {
       top: 206px;
     position: absolute;
-    color: var(--expense-cl);
+    color: $accent-pink;
     @include mq(mobile) {
       top:224px;
     }

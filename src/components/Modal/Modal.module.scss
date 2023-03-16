@@ -1,11 +1,12 @@
 @import "../../stylesheet/base";
 @import "../../stylesheet/fonts";
 @import "../../stylesheet/vars";
+@import "../../stylesheet/mixins";
 
 .overlay {
   align-items: start;
   margin-top: 60px;
-  background-color: #fff;
+  background-color: $white-color;
   position: fixed;
   top: 0;
   left: 0;
@@ -29,4 +30,7 @@
   max-width: calc(100vw - 48px);
   max-height: calc(100vh - 24px);
   background-color: #fff;
+}
+.btn {
+  outline: none;
 }

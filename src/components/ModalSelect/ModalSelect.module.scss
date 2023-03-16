@@ -1,6 +1,7 @@
 @import "../../stylesheet/base";
 @import "../../stylesheet/fonts";
 @import "../../stylesheet/vars";
+@import "../../stylesheet/mixins";
 
 .dropDown{
     &Container{
@@ -9,7 +10,7 @@
       }
       &Header{
         min-width: 280px;
-        color: var(--main-text-cl);
+        color: $black-color;
         font-family: 'Circe', sans-serif;
         font-weight: 400;
         font-size: 18px;
@@ -58,14 +59,14 @@
           line-height: 1.5;
           padding: 9px 0px 9px 20px;
           display: flex;
-          color: var(--main-text-cl);
+          color: $black-color;
           @include mq(mobile){
             width: 400px;
           }
           &:hover,
           &:focus {
-            color: var(--expense-cl);
-            background-color:var(--main-bg-cl) ;
+            color: $accent-pink;
+            background-color:$white-color ;
           }
         }
       }
@@ -78,7 +79,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        color: var(--secondary-text-cl);
+        color: $grey-color;
         @include mq(mobile){
           width: 400px;
         }
