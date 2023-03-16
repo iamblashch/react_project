@@ -19,6 +19,7 @@ export const App = () => {
         <BrowserRouter basename="/react_project">
           <Suspense fallback={<Loader />}>
             <RegistrationPage />
+            <LoginPage/>
           </Suspense>
         </BrowserRouter>
       </PersistGate>

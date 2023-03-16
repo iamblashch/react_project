@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import * as api from '../../shared/Api/Api';
+import * as api from '../../shared/api/auth';
 
 export const register = createAsyncThunk(
     "auth/register",
@@ -10,6 +10,7 @@ export const register = createAsyncThunk(
             return result;
         }
         catch ({ response }) {
+            console.log(response)
             return rejectWithValue(response.data);
         }
     }  
