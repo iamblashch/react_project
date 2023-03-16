@@ -1,7 +1,8 @@
 import { Header } from 'components/Header/Header';
 import Navigation from 'components/Navigation/Navigation';
 import { Balance } from 'components/Balance/Balance';
-import {Currency} from '../../components/Currency/Currency'
+import { Currency } from '../../components/Currency/Currency';
+import { TransactionsList } from '../../components/TransactionsList/TransactionsList';
 
 import css from './DashboardPage.module.scss';
 
@@ -17,36 +18,14 @@ export const DashboardPage = () => {
                 <Navigation />
                 <Balance />
               </div>
-
-              <div className={css.val}>
-              <Currency/></div>
               
+              <div className={css.val}>
+                <Currency />
+              </div>
             </div>
 
             <div className={css.tab}>
-              <table className={css.table}>
-                <thead className={css.tableHead}>
-                  <tr>
-                    <th className={css.tableHeader} scope="col">
-                      Date
-                    </th>
-                    <th className={css.tableHeader} scope="col">
-                      Type
-                    </th>
-                    <th className={css.tableHeader} scope="col">
-                      Category
-                    </th>
-                    <th className={css.tableHeader} scope="col">
-                      Comment
-                    </th>
-                    <th className={css.tableHeader} scope="col">
-                      Sum
-                    </th>
-                    <th className={css.tableHeader} scope="col">
-                    </th>
-                  </tr>
-                </thead>
-              </table>
+              <TransactionsList />
             </div>
           </div>
         </div>

@@ -43,7 +43,7 @@ export const Header = () => {
                   value={{
                     color: '#bdbdbd',
                     className: 'global-class-name',
-                    size: '18px',
+                    size: '24px',
                   }}
                 />
               </div>

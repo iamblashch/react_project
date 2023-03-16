@@ -1,6 +1,6 @@
 ///REACT
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 ///STYLE
 import Style from './RegistrationForm.module.scss';
 ///COMPONENT
@@ -17,7 +17,7 @@ import { MdEmail } from 'react-icons/md';
 import { AiFillLock } from 'react-icons/ai';
 import { FaUser } from 'react-icons/fa';
 ///
-import {getAuth} from "../../redux/auth/auth-selectors"
+// import {getAuth} from "../../redux/auth/auth-selectors"
 
 const RegistrationForm = () => {
 
