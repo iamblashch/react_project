@@ -1,4 +1,4 @@
-import registrationImgTab from '../../assets/images/registration-img.png'
+import registrationImg from '../../assets/images/registration-img.png'
 import styles from './RegistrationPage.module.scss'
 import RegistrationForm from "../../components/RegistrationForm/RegistrationForm"
 const RegistrationPage = () => {
@@ -9,7 +9,7 @@ const RegistrationPage = () => {
                     <div className={styles.commonWrapper}>
                         <div className={styles.bigGroupWrapper}>
                             <div className={styles.wrapper}>
-                                <img src={registrationImgTab} alt='girl' className={styles.imgTab} />
+                                <img src={registrationImg} alt='girl' className={styles.img} />
                                 <h2 className={styles.title}>Finance App</h2>
                             </div>
                         </div>
