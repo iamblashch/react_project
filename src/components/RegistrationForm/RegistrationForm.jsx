@@ -17,13 +17,15 @@ import { MdEmail } from 'react-icons/md';
 import { AiFillLock } from 'react-icons/ai';
 import { FaUser } from 'react-icons/fa';
 ///
-// import {getAuth} from "../../redux/auth/auth-selectors"
+import {getError} from "../../redux/auth/auth-selectors"
+
 
 const RegistrationForm = () => {
 
   const [stateRegistr, setStateRegistr] = useState(initialState);
+  const [dublicat, setDublicat] = useState(false)
   const dispatch = useDispatch();
-  // const { error } = useSelector(getAuth)
+  const error = useSelector(getError)
   
   const hendleChange = e => {
     const { name, value } = e.target;
@@ -35,18 +37,23 @@ const RegistrationForm = () => {
 
   const hendlSubmit = e => {
     e.preventDefault();
+    if (stateRegistr.password !== stateRegistr.confirmPassword) {
+    setDublicat(prevState => !prevState)
+    return
+    }
     const payload = {
       username: stateRegistr.username,
       email: stateRegistr.email,
       password: stateRegistr.password,
     };
     dispatch(register(payload));
-    
   };
 
   return (
     <>
       <Logo />
+      {error && <p className={Style.errorText}>{error}</p>}
+      {dublicat && <p className={Style.errorText}>Enter the same password</p>}
       <form className={Style.RegisterForm} onSubmit={hendlSubmit}>
         <TextField
           icon={<MdEmail className={Style.Icons} />}
