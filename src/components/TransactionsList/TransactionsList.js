@@ -2,7 +2,18 @@ import { useMediaQuery } from 'react-responsive';
 import styles from '../TransactionsList/TransactionsList.module.scss';
 // import { Pencil } from './pencilSVG';
 
+// Nastya
+import { useDispatch } from 'react-redux';
+import { deleteTransaction } from 'redux/finances/finances-operations';
+
 export const TransactionsList = () => {
+  const dispatch = useDispatch()
+
+  const onDeleteContact = id => {
+    console.log('hi!')
+    dispatch(deleteTransaction(id));
+  };
+
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-width: 768px)',
   });
@@ -42,7 +53,10 @@ export const TransactionsList = () => {
                   <td className={styles.tableData}>Gift for your wife</td>
                   <td className={styles.tableData_EXPENSE}>300.00</td>
                   <td className={styles.tableDataBtns}>
-                    <button className={styles.mobailTrItem__btnDelete}>
+                    <button onClick={() => {
+                      console.log('click')
+                      onDeleteContact()
+                    }} className={styles.mobailTrItem__btnDelete}>
                       Delete
                     </button>
                     <button className={styles.mobailTrItem__btnEdit}>

@@ -4,6 +4,7 @@ import {
   getSummary,
   getCategories,
   addTransaction,
+  deleteTransaction,
 } from "./finances-operations";
 import { logout, current } from "redux/auth/auth-operations";
 import { toast } from "react-toastify";
@@ -142,6 +143,20 @@ const financeSlice = createSlice({
         state.totalBalance = payload.balance;
       })
       .addCase(current.rejected, (state, { payload }) => {
+        state.loading = false;
+        state.error = payload;
+      })
+
+      // Nastya
+    .addCase(deleteTransaction.pending, state => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(deleteTransaction.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        state.contacts = state.contacts.filter(item => item.id !== payload);
+      })
+      .addCase(deleteTransaction.rejected, (state, { payload }) => {
         state.loading = false;
         state.error = payload;
       });
