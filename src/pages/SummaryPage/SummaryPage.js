@@ -1,12 +1,17 @@
+import { useSelector } from 'react-redux';
 import { Header } from 'components/Header/Header';
 import Navigation from 'components/Navigation/Navigation';
 import { Balance } from 'components/Balance/Balance';
 import { Currency } from '../../components/Currency/Currency';
 import { TransactionsList } from '../../components/TransactionsList/TransactionsList';
+import ButtonAddTransactions from '../../components/ButtonAddTransactions/ButtonAddTransactions'
+import ModalAddTransaction from "../../components/ModalAddTransaction/ModalAddTransaction" 
+import  globalSelectors  from '../../redux/modal/modal-selectors';
 
-import css from './DashboardPage.module.scss';
+import css from './SummaryPage.module.scss';
 
-export const DashboardPage = () => {
+export const SummaryPage = () => {
+  const showModal = useSelector(globalSelectors.getIsModalAddTransaction);
   return (
     <>
       <Header />
@@ -25,10 +30,11 @@ export const DashboardPage = () => {
             </div>
 
             <div className={css.tab}>
-              
             </div>
+            <ButtonAddTransactions/>
           </div>
         </div>
+        {showModal && <ModalAddTransaction />}
       </main>
     </>
   );

@@ -13,7 +13,7 @@ const Navigation = () => {
         <nav className={styles.nav}>
             <ul className={styles.list}>
                 <li className={styles.item}>
-                    <NavLink to='/home' className={styles.link}>
+                    <NavLink to='/' className={styles.link}>
                             <AiFillHome style={{ width: "38", height: "38", color: "white" }}/>
                     </NavLink>
                 </li>
@@ -34,7 +34,7 @@ const Navigation = () => {
         <nav className={styles.nav}>
             <ul className={styles.list}>
                 <li className={styles.item}>
-                    <NavLink to='/home' className={styles.link}>
+                    <NavLink to='/' className={styles.link}>
                         <div className={styles.favWrapper}>
                             <AiFillHome style={{ width: "12", height: "11", color: "white" }}/>
                         </div>        

@@ -25,7 +25,7 @@ export const Header = () => {
   return (
     <header className={css.container}>
       <section className={css.header}>
-        <Link to="/home" className={css.link}>
+        <Link to="/" className={css.link}>
           <Logo svg={css.link__logo} />
           <p className={css.link__title}>Wallet</p>
         </Link>
