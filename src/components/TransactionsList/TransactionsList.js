@@ -1,12 +1,11 @@
 import { useMediaQuery } from 'react-responsive';
 import styles from '../TransactionsList/TransactionsList.module.scss';
-import { Pencil } from './pencilSVG';
+// import { Pencil } from './pencilSVG';
 
 export const TransactionsList = () => {
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-width: 768px)',
   });
-  console.log(isDesktopOrLaptop);
   return (
     <>
       {isDesktopOrLaptop && (
@@ -47,7 +46,7 @@ export const TransactionsList = () => {
                       Delete
                     </button>
                     <button className={styles.mobailTrItem__btnEdit}>
-                      <Pencil />
+                      {/* <Pencil /> */}
                     </button>
                   </td>
                 </tr>
@@ -93,7 +92,7 @@ export const TransactionsList = () => {
                     Delete
                   </button>
                   <button className={styles.mobailTrItem__btnEdit}>
-                    <Pencil />
+                    {/* <Pencil /> */}
                     Edit
                   </button>
                 </li>

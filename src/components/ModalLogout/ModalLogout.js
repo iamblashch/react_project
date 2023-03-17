@@ -6,11 +6,11 @@ import { toggleModalLogout } from "redux/modal/modalSlice";
 import { logout } from "redux/auth/auth-operations";
 
 
-// export default function ModalLogout() {
-//   const dispatch = useDispatch();
-//   const isCloseModal = () => {
-//     dispatch(toggleModalLogout());
-//   };
+export default function ModalLogout() {
+  const dispatch = useDispatch();
+  const isCloseModal = () => {
+    dispatch(toggleModalLogout());
+  };
 
 
   const logOutUser = () => {

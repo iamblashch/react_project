@@ -13,13 +13,13 @@ const initialState = {
 const globalSlice = createSlice({
   name: "global",
   initialState,
-  reducers: builder => {
-    builder.addCase(toggleModalAddTransaction, state => {
+  reducers: {
+    toggleModalAddTransaction: (state) => {
       state.isModalAddTransactionOpen = !state.isModalAddTransactionOpen;
-    });
-    builder.addCase(toggleModalLogout, state => {
+    },
+    toggleModalLogout: (state) => {
       state.isModalLogoutOpen = !state.isModalLogoutOpen;
-    });
+    },
   },
   extraReducers: builder => {
     builder

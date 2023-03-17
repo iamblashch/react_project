@@ -4,7 +4,6 @@ import { store, persistor } from '../redux/store';
 import { Provider } from 'react-redux';
 import Loader from './Loader/Loader';
 
-
 import { PersistGate } from 'redux-persist/integration/react';
 // import { Header } from './Header/Header';
 
@@ -21,10 +20,8 @@ export const App = () => {
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter basename="/react_project">
           <Suspense fallback={<Loader />}>
-<DashboardPage/>
-<RegistrationPage/>
-
-
+            <DashboardPage />
+            {/* <RegistrationPage /> */}
           </Suspense>
         </BrowserRouter>
       </PersistGate>
