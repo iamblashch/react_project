@@ -52,3 +52,19 @@ export const getCategories = createAsyncThunk(
     }
   }
 );
+
+// Nastya
+
+export const deleteTransaction = createAsyncThunk(
+  'delete',
+  async (id, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.delete(`${id}`);
+      console.log(id)
+      console.log(data)
+      return id;
+    } catch ({ response }) {
+      return rejectWithValue(response);
+    }
+  }
+);
