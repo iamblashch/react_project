@@ -1,6 +1,6 @@
 ///REACT
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 ///STYLE
 import Style from './RegistrationForm.module.scss';
 ///COMPONENT

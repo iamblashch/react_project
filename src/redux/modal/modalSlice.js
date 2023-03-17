@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   allTransactions,
   addTransaction,
-} from "redux/finance/finance-operation";
-import { logout } from "redux/session/auth-operation";
+} from "../finances/finances-operations";
+import { logout } from "../auth/auth-operations";
 
 const initialState = {
   isModalAddTransactionOpen: false,
