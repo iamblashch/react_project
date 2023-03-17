@@ -40,7 +40,7 @@ const authSlice = createSlice({
         })
         .addCase(login.rejected, (state, {payload}) => {
             state.loading = false;
-            state.error = payload;
+            state.error = payload.message;
         })
         .addCase(current.pending, state => {
             state.loading = true;
