@@ -4,7 +4,7 @@ import {Modal} from "components/Modal/Modal";
 import { useDispatch } from "react-redux";
 import { toggleModalLogout } from "redux/modal/modalSlice";
 import { logout } from "../../redux/auth/auth-operations";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 

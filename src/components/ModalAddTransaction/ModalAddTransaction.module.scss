@@ -184,6 +184,7 @@
       border: none;
       outline: none;
       border-bottom: 1px solid #e0e0e0;
+      cursor: pointer;
       @include mq(mobile) {
         max-width: 160px;
       }
