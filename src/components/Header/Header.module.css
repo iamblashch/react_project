@@ -1,0 +1,116 @@
+.container {
+  width: 320px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0 auto;
+}
+@media screen and (min-width: 479px) {
+  .container {
+    width: 480px;
+  }
+}
+@media screen and (min-width: 767px) {
+  .container {
+    width: 768px;
+  }
+}
+@media screen and (min-width: 1279px) {
+  .container {
+    width: 1280px;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.link {
+  display: flex;
+}
+.link__logo {
+  width: 30px;
+  height: 30px;
+}
+@media screen and (min-width: 479px) {
+  .link__logo {
+    width: 40px;
+    height: 40px;
+  }
+}
+.link__title {
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.5;
+  margin-left: 15px;
+  transition: color 450ms ease;
+}
+@media screen and (min-width: 479px) {
+  .link__title {
+    margin-left: 20px;
+    font-size: 30px;
+    line-height: 1.5;
+  }
+}
+
+.user {
+  display: flex;
+  align-items: center;
+}
+.user__name {
+  margin-right: 12px;
+  padding-right: 12px;
+  border-right: 1px solid;
+  font-weight: 400;
+  font-size: 18px;
+  margin-left: 5px;
+  line-height: 1.5;
+  color: #bdbdbd;
+}
+
+.logout {
+  display: flex;
+}
+.logout__button {
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+  color: rgb(189, 189, 189);
+  transition: color 250ms ease;
+}
+.logout__button:hover, .logout__button:focus {
+  color: FF6596;
+}
+.logout__button:hover span, .logout__button:focus span {
+  color: FF6596;
+}
+.logout__text {
+  display: none;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  margin-left: 8px;
+  color: var();
+  transition: color 250ms ease;
+}
+@media screen and (min-width: 479px) {
+  .logout__text {
+    display: block;
+  }
+}
+
+.wrapper {
+  display: flex;
+}
+
+@media screen and (max-width: 479px) {
+  .icon {
+    display: none;
+  }
+}/*# sourceMappingURL=Header.module.css.map */

@@ -2,7 +2,7 @@ import styled from "./ModalLogout.module.scss";
 import {Modal} from "components/Modal/Modal";
 import { useDispatch } from "react-redux";
 import { toggleModalLogout } from "redux/modal/modalSlice";
-import { logOut } from "redux";
+import { logout } from "redux/auth/auth-operations";
 
 export default function ModalLogout() {
   const dispatch = useDispatch();
@@ -11,7 +11,7 @@ export default function ModalLogout() {
   };
 
   const logOutUser = () => {
-    dispatch(logOut());
+    dispatch(logout());
   };
   return (
     <Modal closeModal={isCloseModal}>

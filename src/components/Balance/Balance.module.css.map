@@ -1,1 +1,1 @@
-{"version":3,"sources":[],"names":[],"mappings":"","file":"Balance.module.css"}
+{"version":3,"sources":["Balance.module.scss","Balance.module.css"],"names":[],"mappings":"AAAA;EACE,gBAAA;EACA,iBAAA;EACA,oCAAA;EACA,mBAAA;ACCF;ADCE;EANF;IAOI,gBAAA;IACA,iBAAA;ECEF;AACF;ADAE;EAXF;IAYI,gBAAA;ECGF;AACF;;ADAA;EACE,yBAAA;EACA,mBAAA;EACA,gBAAA;EACA,eAAA;EAEA,wBAAA;ACEF;;ADCA;EACE,sBAAA;EACA,kBAAA;EACA,gBAAA;EACA,eAAA;ACEF;;ADCA;EACE,oBAAA;EACA,kBAAA;EACA,gBAAA;ACEF","file":"Balance.module.css"}
