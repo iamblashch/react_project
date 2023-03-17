@@ -45,7 +45,8 @@ const hendleChange = e => {
           value={stateLogin.password}
           onChange={hendleChange}
         />
-        <ButtonCurrent name={'LOG IN'} />
+        
+       <ButtonCurrent name={'LOG IN'} />
       </form>
       <NavLink to="/register"><ButtonConversion name={'REGISTER'} /></NavLink>
     </>

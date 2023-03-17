@@ -3,6 +3,7 @@ import Navigation from 'components/Navigation/Navigation';
 import { Balance } from 'components/Balance/Balance';
 import { Currency } from '../../components/Currency/Currency';
 import { TransactionsList } from '../../components/TransactionsList/TransactionsList';
+import ButtonAddTransactions from '../../components/ButtonAddTransactions/ButtonAddTransactions'
 
 import css from './DashboardPage.module.scss';
 
@@ -27,6 +28,7 @@ export const DashboardPage = () => {
             <div className={css.tab}>
               <TransactionsList />
             </div>
+            <ButtonAddTransactions/>
           </div>
         </div>
       </main>

@@ -24,14 +24,14 @@ export const login = async (data)=> {
     return result;
 }
 export const logout = async ()=> {
-    const {data} = await instance.post("/api/auth/sign-out");
+    const {data} = await instance.delete("/api/auth/sign-out");
     setToken();
     return data;
 }
 export const getCurrent = async (token)=> {
     try {
         setToken(token);
-        const {data} = await instance.get("/api/auth/current");
+        const {data} = await instance.get("/api/users/current");
         return data;
     }
     catch(error) {

@@ -101,6 +101,7 @@ const RegistrationForm = () => {
           onChange={hendleChange}
           {...fields.username}
         />
+        
         <ButtonCurrent name={`REGISTER`} />
       </form>
       <NavLink to="/login"><ButtonConversion name={`LOG IN`} /></NavLink>
