@@ -14,6 +14,7 @@ export default function ModalSelect({ options, onClick }) {
     setIsOpen(false);
     onClick(option.id);
   };
+  console.log(options)
   return (
     <div className={styled.dropDownContainer}>
       <div

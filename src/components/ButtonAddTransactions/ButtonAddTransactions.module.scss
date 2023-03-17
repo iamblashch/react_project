@@ -23,6 +23,9 @@
     bottom: 40px;
   }
   &__wrap {
+    position: relative;
+    top: -3px;
+    right: 0px;
     color: $white-color;
     font-size: 37px;
 
