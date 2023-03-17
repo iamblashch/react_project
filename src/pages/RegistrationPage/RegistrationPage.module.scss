@@ -25,6 +25,7 @@ position: relative;
   @media screen and (min-width: 1280px) {
     display: flex;
     align-items: center;
+    justify-content: center;
   }
 }
 
@@ -61,10 +62,10 @@ position: relative;
   height: 250px;
 
   @media screen and (min-width: 1280px) {
-    width: 452px;
-    height: 413px;
-    margin-bottom: 32px;
-  }
+      width: 452px;
+      height: 413px;
+      margin-bottom: 32px;
+    }
 }
 
 .title {
@@ -90,7 +91,7 @@ position: relative;
   padding: 30px 0;
   @media screen and (min-width: 768px) {
     width: 533px;
-    height: 616px;
+
     border-radius: 20px;
   }
 }

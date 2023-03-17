@@ -1,6 +1,6 @@
 import styles from '../LoginPage/LoginPage.module.scss';
 import loginImg from '../../assets/images/login-img.png';
-
+import LoginForm from "../../components/LoginForm/LoginForm"
 export const LoginPage = () => {
   return (
     <>
@@ -14,7 +14,9 @@ export const LoginPage = () => {
               </div>
             </div>
             <div className={styles.formWrapper}>
-              <div className={styles.form}></div>
+              <div className={styles.form}>
+                <LoginForm/>
+              </div>
             </div>
           </div>
         </div>

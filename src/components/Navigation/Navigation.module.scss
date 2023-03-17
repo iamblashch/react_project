@@ -1,12 +1,11 @@
-.centered {
+ .centered {
     padding-top: 15px;
     padding-bottom: 28px;
 
     @media screen and (min-width: 768px) {
-        padding-top: 45px;
-        padding-left: 35px;
-        padding-bottom: 32px;
-        padding-right: 35px;
+        padding-top: 40px;
+        padding-left: 32px;
+        padding-bottom: 28px;
     }
 
     @media screen and (min-width: 1280px) {
@@ -36,7 +35,7 @@
 
 .list{
     display: flex;
-    gap: 30px;
+    gap: 12px;
     justify-content: center;
 
     font-family: 'Poppins';
