@@ -1,12 +1,19 @@
 .section {
-position: relative;
+  position: relative;
+
+  padding-top: 32px;
+  padding-bottom: 36px;
+
   background-color: rgb(255, 255, 255);
   background-size: cover;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   @media screen and (min-width: 768px) {
     background-color: var(--bcg-main-color);
-    padding-top: 32px;
-    padding-bottom: 36px;
     padding-top: 60px;
     padding-bottom: 48px;
 

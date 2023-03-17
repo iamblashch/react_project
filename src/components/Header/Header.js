@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import { useSelector, useDispatch } from 'react-redux';
+import { useSelector} from 'react-redux';
 
 import { Logo } from './Logo';
 import { RxExit } from 'react-icons/rx';
 import { IconContext } from 'react-icons';
 import { FaUser } from 'react-icons/fa';
+import {getUser} from '../../redux/auth/auth-selectors'
 
 // import ModalLogout from '../ModalLogout/ModalLogout';
 // import { toggleModalLogout } from '../../redux/modal/modalSlice';
@@ -14,6 +15,7 @@ import { FaUser } from 'react-icons/fa';
 import css from './Header.module.scss';
 
 export const Header = () => {
+  const {username} = useSelector(getUser)
   // const modalOpen = useSelector(globalSelectors.getIsModalLogout);
   // const dispatch = useDispatch();
   // const isOpenModal = () => {
@@ -41,11 +43,11 @@ export const Header = () => {
                   value={{
                     color: '#bdbdbd',
                     className: 'global-class-name',
-                    size: '18px',
+                    size: '24px',
                   }}
                 />
               </div>
-              <span className={css.user__name}>name</span>
+              <span className={css.user__name}>{username}</span>
             </IconContext.Provider>
           </div>
           <IconContext.Provider
