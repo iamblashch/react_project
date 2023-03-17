@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { getAuth } from 'redux/auth/auth-selectors';
 import Loader from 'components/Loader/Loader';
 
-const PrivateRoute = () => {
+export const PrivateRoute = () => {
   const { isLogin, token } = useSelector(getAuth);
 
   if (!isLogin && token) {
@@ -11,9 +11,9 @@ const PrivateRoute = () => {
   }
 
   if (!isLogin && !token) {
-    return <Navigate to="/register" />;
+    return <Navigate to="/login" />;
   }
   return <Outlet />;
 };
 
-export default PrivateRoute;
+

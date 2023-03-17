@@ -47,7 +47,7 @@ const hendleChange = e => {
         />
         <ButtonCurrent name={'LOG IN'} />
       </form>
-      <NavLink to="Register"><ButtonConversion name={'REGISTER'} /></NavLink>
+      <NavLink to="/register"><ButtonConversion name={'REGISTER'} /></NavLink>
     </>
   );
 };

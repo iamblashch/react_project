@@ -103,7 +103,7 @@ const RegistrationForm = () => {
         />
         <ButtonCurrent name={`REGISTER`} />
       </form>
-      <NavLink to="Login"><ButtonConversion name={`LOG IN`} /></NavLink>
+      <NavLink to="/login"><ButtonConversion name={`LOG IN`} /></NavLink>
     </>
   );
 };

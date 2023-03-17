@@ -2,7 +2,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { isUserLogin } from 'redux/auth/auth-selectors';
 
-const PublicRoute = () => {
+export const PublicRoute = () => {
   const isLogin = useSelector(isUserLogin);
 
   if (isLogin) {
@@ -11,4 +11,3 @@ const PublicRoute = () => {
   return <Outlet />;
 };
 
-export default PublicRoute;
