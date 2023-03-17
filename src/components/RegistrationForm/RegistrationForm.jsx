@@ -88,13 +88,15 @@ const RegistrationForm = () => {
           onChange={hendleChange}
           {...fields.password}
         />
+        <div className={Style.containerPasswordBar}>
         <TextField
           icon={<AiFillLock className={Style.Icons} />}
           value={stateRegistr.confirmPassword}
           onChange={hendleChange}
           {...fields.confirmPassword}
         />
-        <PaswordLineBar stateRegistr={stateRegistr} />
+          <PaswordLineBar stateRegistr={stateRegistr} />
+          </div>
         <TextField
           icon={<FaUser className={Style.Icons} />}
           value={stateRegistr.username}
