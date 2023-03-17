@@ -51,9 +51,6 @@ const globalSlice = createSlice({
       });
   },
 });
-
-
-
 export const {
   toggleModalAddTransaction,
   toggleModalLogout,
