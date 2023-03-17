@@ -7,6 +7,7 @@ import { TransactionsList } from '../../components/TransactionsList/Transactions
 import ButtonAddTransactions from '../../components/ButtonAddTransactions/ButtonAddTransactions'
 import ModalAddTransaction from "../../components/ModalAddTransaction/ModalAddTransaction" 
 import  globalSelectors  from '../../redux/modal/modal-selectors';
+import { Route,Routes } from 'react-router-dom';
 
 import css from './DashboardPage.module.scss';
 
@@ -18,6 +19,7 @@ export const DashboardPage = () => {
       <main className={css.section}>
         <div className={css.container}>
           <div className={css.commonWrapper}>
+          
             <div className={css.wrapper}>
               <div>
                 <Navigation />
@@ -25,7 +27,7 @@ export const DashboardPage = () => {
               </div>
               
               <div className={css.val}>
-                <Currency />
+                <Currency  />
               </div>
             </div>
 

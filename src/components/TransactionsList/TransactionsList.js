@@ -1,6 +1,6 @@
 import { useMediaQuery } from 'react-responsive';
 import styles from '../TransactionsList/TransactionsList.module.scss';
-// import { Pencil } from './pencilSVG';
+import { BiPencil } from 'react-icons/bi';
 
 // Nastya
 import { useDispatch } from 'react-redux';
@@ -60,7 +60,7 @@ export const TransactionsList = () => {
                       Delete
                     </button>
                     <button className={styles.mobailTrItem__btnEdit}>
-                      {/* <Pencil /> */}
+                      <BiPencil />
                     </button>
                   </td>
                 </tr>
@@ -106,7 +106,7 @@ export const TransactionsList = () => {
                     Delete
                   </button>
                   <button className={styles.mobailTrItem__btnEdit}>
-                    {/* <Pencil /> */}
+                    <BiPencil />
                     Edit
                   </button>
                 </li>

@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { IoIosArrowDown } from 'react-icons/io';
+import {allCategoriesWithColors} from '../../assets/const'
 import styled from './ModalSelect.module.scss';
 
 export default function ModalSelect({ options, onClick }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
   const toggling = () => setIsOpen(!isOpen);
+  console.log('object :>> ',allCategoriesWithColors);
   const onEnter = e => {
     if (e.code === 'Enter') toggling();
   };
