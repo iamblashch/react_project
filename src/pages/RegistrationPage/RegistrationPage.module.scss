@@ -1,27 +1,27 @@
 .section {
   position: relative;
-
-  padding-top: 32px;
-  padding-bottom: 36px;
-
-  background-color: rgb(255, 255, 255);
-  background-size: cover;
-  overflow: hidden;
-  height: 100vh;
   
   display: flex;
   align-items: center;
   justify-content: center;
-
+  
+  padding-top: 32px;
+  padding-bottom: 36px;
+  
+  background-color: rgb(255, 255, 255);
+  background-size: cover;
+  
   @media screen and (min-width: 768px) {
-    background-color: var(--bcg-main-color);
     padding-top: 60px;
     padding-bottom: 48px;
-
+    
+    background-color: var(--bcg-main-color);
     background-image: url('../../assets/images/tablet-bcg-img.png');
   }
-
+  
   @media screen and (min-width: 1280px) {
+    height: 100vh;
+    
     padding-top: 52px;
     padding-bottom: 52px;
 
@@ -30,6 +30,19 @@
 }
 
 .commonWrapper {
+  transition: 1.5s;
+  animation: left 1s 1;
+  animation-fill-mode: forwards;
+
+  @keyframes left {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+  }
+
   @media screen and (min-width: 1280px) {
     display: flex;
     align-items: center;
