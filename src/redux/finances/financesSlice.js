@@ -99,7 +99,6 @@ const financeSlice = createSlice({
         state.data = [...state.data, payload];
         state.error = null;
         state.isLogin = true;
-        
         state.totalBalance = payload;
       })
       .addCase(addTransaction.rejected, (state, { payload }) => {
