@@ -52,10 +52,10 @@ export const Categories = async (token)=> {
     }
 }
 
-export const Transaction = async (transaction,token)=> {
+export const Transaction = async (token)=> {
     try {
         setToken(token);
-        const {data} = await instance.post("/api/transactions,",transaction);
+        const {data} = await instance.post("/api/transactions");
         return data;
     }
     catch(error) {

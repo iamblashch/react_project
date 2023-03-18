@@ -14,6 +14,8 @@ export const allTransactions = createAsyncThunk(
   }
 );
 
+
+
 // export const addTransaction = createAsyncThunk(
 //   "add",
 //   async (transaction, { rejectWithValue }) => {
@@ -30,7 +32,8 @@ export const allTransactions = createAsyncThunk(
 //   }
 // );
 export const addTransaction = createAsyncThunk(
-  'add/transaction',
+
+  'transaction/add',
   async (transaction, { rejectWithValue, getState }) => {
     try {
       const { auth } = getState();
@@ -40,7 +43,8 @@ export const addTransaction = createAsyncThunk(
       return result;
     } catch ({ response }) {
       console.log('response :>> ', response);
-      console.log('tansactin :>> ', typeof transaction.amount);
+      console.log('tansactin :>> ',transaction
+      );
       return rejectWithValue(response.data);
     }
   }
