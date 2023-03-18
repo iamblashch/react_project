@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import * as api from '../../shared/Api/auth ';
+import * as api from '../../shared/Api/auth';
 
 export const register = createAsyncThunk(
   'auth/register',
@@ -61,14 +61,14 @@ export const current = createAsyncThunk(
   }
 );
 
-export const refresh = createAsyncThunk(
-  'auth/refresh',
-  async (_, { getState, rejectWithValue }) => {
-    try {
-      const { data } = await api.get('/api/users/current');
-      return data;
-    } catch (error) {
-      rejectWithValue(error.message);
-    }
-  }
-);
+// export const refresh = createAsyncThunk(
+//   'auth/refresh',
+//   async (_, { getState, rejectWithValue }) => {
+//     try {
+//       const { data } = await api.get('/api/users/current');
+//       return data;
+//     } catch (error) {
+//       rejectWithValue(error.message);
+//     }
+//   }
+// );
