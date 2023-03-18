@@ -10,8 +10,6 @@ import { useEffect } from 'react';
 
 export const TransactionsList = () => {
   const items = useSelector(financeSelectors.getFilteredData);
-  // const categories = useSelector(financeSelectors.getCategories);
-  // console.log(categories)
 
   const dispatch = useDispatch();
 
@@ -32,12 +30,12 @@ export const TransactionsList = () => {
   });
 
   const elements = items?.map(
-    ({ id, type, transactionDate, categoryId, comment, amount }) => {
+    ({ id, type, transactionDate, category, comment, amount }) => {
       return (
         <tr key={id} className={styles.tableRow}>
           <td className={styles.tableData}>{transactionDate}</td>
           <td className={styles.tableData}>{type !== 'EXPENSE' ? '+' : '-'}</td>
-          <td className={styles.tableData}>{categoryId.name}</td>
+          <td className={styles.tableData}>{category}</td>
           <td className={styles.tableData}>{comment}</td>
           <td className={styles.tableData_EXPENSE}>{amount}</td>
           <td className={styles.tableDataBtns}>
@@ -57,6 +55,7 @@ export const TransactionsList = () => {
       );
     }
   );
+
   return (
     <>
       {isDesktopOrLaptop && (
