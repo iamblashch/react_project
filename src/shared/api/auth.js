@@ -24,14 +24,61 @@ export const login = async (data)=> {
     return result;
 }
 export const logout = async ()=> {
-    const {data} = await instance.post("/api/auth/sign-out");
+    const {data} = await instance.delete("/api/auth/sign-out");
     setToken();
     return data;
 }
 export const getCurrent = async (token)=> {
     try {
         setToken(token);
-        const {data} = await instance.get("/api/auth/current");
+        const {data} = await instance.get("/api/users/current");
+        return data;
+    }
+    catch(error) {
+        setToken();
+        throw error;
+    }
+}
+
+export const Categories = async (token)=> {
+    try {
+        setToken(token);
+        const {data} = await instance.get("/api/transaction-categories");
+        return data;
+    }
+    catch(error) {
+        setToken();
+        throw error;
+    }
+}
+
+export const Transaction = async (token)=> {
+    try {
+        setToken(token);
+        const {data} = await instance.post("/api/transactions");
+        return data;
+    }
+    catch(error) {
+        setToken();
+        throw error;
+    }
+}
+
+export const getSummary = async (token)=> {
+    try {
+        setToken(token);
+        const {data} = await instance.get("/api/transaction-categories");
+        return data;
+    }
+    catch(error) {
+        setToken();
+        throw error;
+    }
+}
+export const deleteTransaction = async (token)=> {
+    try {
+        setToken(token);
+        const {data} = await instance.delete("/api/transaction-categories");
         return data;
     }
     catch(error) {

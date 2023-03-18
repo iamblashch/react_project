@@ -6,10 +6,10 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import {
   addTransaction,
-  allTransactions,
-} from 'redux/finances/finances-operations';
-// import { logout } from "redux/session/auth-operation";
-import { logout } from 'redux/auth/auth-operations';
+
+} from "../finances/finances-operations";
+import { logout } from "../auth/auth-operations";
+
 
 const initialState = {
   isModalAddTransactionOpen: false,
@@ -19,13 +19,14 @@ const initialState = {
 const globalSlice = createSlice({
   name: 'global',
   initialState,
-  reducers: builder => {
-    builder.addCase(toggleModalAddTransaction, state => {
+  reducers: {
+    toggleModalAddTransaction: (state) => {
       state.isModalAddTransactionOpen = !state.isModalAddTransactionOpen;
-    });
-    builder.addCase(toggleModalLogout, state => {
+      
+    },
+    toggleModalLogout: (state) => {
       state.isModalLogoutOpen = !state.isModalLogoutOpen;
-    });
+    },
   },
   extraReducers: builder => {
     builder

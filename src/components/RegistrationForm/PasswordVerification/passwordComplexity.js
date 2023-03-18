@@ -9,3 +9,13 @@
       return 'strong';
     }
 };
+export const lengthPassword = (stateRegistr) => {
+  if (stateRegistr.password !== stateRegistr.confirmPassword) {
+    console.log(`not dublicat`)
+  }else if(stateRegistr.password.length < 5) {
+    console.log('< 5')
+  } else {
+    console.log('> 5')
+  }
+}
+

@@ -1,4 +1,7 @@
-
+.containerPasswordBar {
+position: relative;
+width: 100%;
+}
 .RegisterForm {
   width: 100%;
   display: flex;
@@ -16,7 +19,7 @@
 
 .Icons {
   position: absolute;
-  top: 9px;
+  top: 5px;
   left: 5px;
   fill: grey;
 }
