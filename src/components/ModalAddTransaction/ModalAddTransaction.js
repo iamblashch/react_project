@@ -16,8 +16,6 @@ import "react-datetime/css/react-datetime.css";
 import styled from "./ModalAddTransaction.module.scss";
 import { toast } from "react-toastify";
 
-
-
 const validationSchema = Yup.object().shape({
   type: Yup.string()
      .required('Type is required'),
@@ -68,9 +66,11 @@ const ModalAddTransaction = () => {
   const expenseCategories = categories?.filter(
     (category) => category.type === "EXPENSE"
   );
-  // const incomeCategory = categories?.find(
-  //   (category) => category.type === "INCOME"
-  // );
+
+  const incomeCategory = categories?.find(
+    (category) => category.type === "INCOME"
+  );
+
   const isCloseModal = () => {
     dispatch(toggleModalAddTransaction());
   };
@@ -79,11 +79,13 @@ const ModalAddTransaction = () => {
     setChooseType(!chooseType);
     setType(chooseType ? "EXPENSE" : "INCOME");
   };
+
   const enterByFocus = (e) => {
     if (e.keyCode === 13) {
       handleChangeType();
     }
   };
+
   const handleSubmitForm = ({
     type,
     amount,
@@ -92,12 +94,14 @@ const ModalAddTransaction = () => {
     transactionDate,
   }) => {
     const normalizedAmount = type === "EXPENSE" ? -amount : amount;
+
     if (amount === "0") {
       if (!toast.isActive(toastId.current)) {
         toastId.current = toast.error("Enter amount!");
       }
       return;
     }
+
     dispatch(
       addTransaction({
         type,
@@ -179,7 +183,7 @@ const ModalAddTransaction = () => {
                     autoComplete="off"
                     className={styled.visuallyHidden}
                     type="text"
-                    // value={(values.categoryId = incomeCategory.id)}
+                    value={(values.categoryId = incomeCategory.id)}
                     onChange={handleChange}
                   />
                 </>
@@ -259,6 +263,3 @@ const ModalAddTransaction = () => {
   );
 };
 export default ModalAddTransaction;
-
-
-

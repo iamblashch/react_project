@@ -9,42 +9,49 @@ import styles from '../TransactionsList/TransactionsList.module.scss';
 import { useEffect } from 'react';
 
 export const TransactionsList = () => {
-  const items = useSelector(state => state.finance.data)
-  
+  const items = useSelector(state => state.finance.data);
+
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
-    dispatch(allTransactions())
+    dispatch(allTransactions());
   }, [dispatch]);
 
   const onDeleteContact = id => {
     dispatch(deleteTransaction(id));
-    dispatch(allTransactions())
+    dispatch(allTransactions());
   };
 
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-width: 768px)',
   });
 
-  const elements = items?.map(({id, type, transactionDate, categoryId, comment, amount}) => { 
-    return (<tr key={id} className={styles.tableRow}>
-                  <td className={styles.tableData}>{transactionDate}</td>
-                  <td className={styles.tableData}>{type}</td>
-                  <td className={styles.tableData}>{categoryId.name}</td>
-                  <td className={styles.tableData}>{comment}</td>
-                  <td className={styles.tableData_EXPENSE}>{amount}</td>
-                  <td className={styles.tableDataBtns}>
-                    <button onClick={() => {
-                      onDeleteContact(id)
-                    }} className={styles.mobailTrItem__btnDelete}>
-                      Delete
-                    </button>
-                    <button className={styles.mobailTrItem__btnEdit}>
-                      <BiPencil />
-                    </button>
-                  </td>
-                </tr>)
-  })
+  const elements = items?.map(
+    ({ id, type, transactionDate, categoryId, comment, amount }) => {
+      return (
+        <tr key={id} className={styles.tableRow}>
+          <td className={styles.tableData}>{transactionDate}</td>
+          <td className={styles.tableData}>{type}</td>
+          <td className={styles.tableData}>{categoryId.name}</td>
+          <td className={styles.tableData}>{comment}</td>
+          <td className={styles.tableData_EXPENSE}>{amount}</td>
+          <td className={styles.tableDataBtns}>
+            <button
+              onClick={() => {
+                onDeleteContact(id);
+              }}
+              className={styles.mobailTrItem__btnDelete}
+            >
+              Delete
+            </button>
+            <button className={styles.mobailTrItem__btnEdit}>
+              <BiPencil />
+            </button>
+          </td>
+        </tr>
+      );
+    }
+  );
   return (
     <>
       {isDesktopOrLaptop && (
@@ -73,9 +80,7 @@ export const TransactionsList = () => {
           </table>
           <div className={styles.tableScrollBox}>
             <table className={styles.dataTable}>
-              <tbody className={styles.tableBody}>
-                {elements}
-              </tbody>
+              <tbody className={styles.tableBody}>{elements}</tbody>
             </table>
           </div>
         </div>
