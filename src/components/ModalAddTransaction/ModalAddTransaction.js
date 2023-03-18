@@ -68,9 +68,9 @@ const ModalAddTransaction = () => {
   const expenseCategories = categories?.filter(
     (category) => category.type === "EXPENSE"
   );
-  const incomeCategory = categories?.find(
-    (category) => category.type === "INCOME"
-  );
+  // const incomeCategory = categories?.find(
+  //   (category) => category.type === "INCOME"
+  // );
   const isCloseModal = () => {
     dispatch(toggleModalAddTransaction());
   };

@@ -2,12 +2,6 @@ import { BrowserRouter } from 'react-router-dom';
 
 
 import { PersistGate } from 'redux-persist/integration/react';
-
-
-// import { LoginPage } from 'pages/LoginPage/LoginPage';
-import { DashboardPage } from 'pages/DashboardPage/DashboardPage';
-import { Chart } from 'chart.js';
-
 import { store, persistor } from '../redux/store';
 import { Provider } from 'react-redux';
 
