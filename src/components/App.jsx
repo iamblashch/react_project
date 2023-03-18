@@ -1,8 +1,16 @@
 import { BrowserRouter } from 'react-router-dom';
+
+
 import { PersistGate } from 'redux-persist/integration/react';
+
+
+// import { LoginPage } from 'pages/LoginPage/LoginPage';
+import { DashboardPage } from 'pages/DashboardPage/DashboardPage';
+import { Chart } from 'chart.js';
 
 import { store, persistor } from '../redux/store';
 import { Provider } from 'react-redux';
+
 
 import AuthLayout  from './AuthLayout/AuthLoyout';
 import {UserRoutes} from '../UserRoutes'
@@ -12,9 +20,11 @@ export const App = () => {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter basename="/react_project">
+
           <AuthLayout>
             <UserRoutes/>
           </AuthLayout>
+
         </BrowserRouter>
       </PersistGate>
     </Provider>
