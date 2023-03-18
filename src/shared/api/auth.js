@@ -62,22 +62,16 @@ export const allTransactions = async () => {
   return data;
 };
 
+export const deleteTransaction = async (id) => {
+  const { data } = await instance.delete(`/api/transactions/${id}`);
+  return data;
+};
+
 
 // export const getSummary = async (token)=> {
 //     try {
 //         setToken(token);
 //         const {data} = await instance.get("/api/transaction-categories");
-//         return data;
-//     }
-//     catch(error) {
-//         setToken();
-//         throw error;
-//     }
-// }
-// export const deleteTransaction = async (token)=> {
-//     try {
-//         setToken(token);
-//         const {data} = await instance.delete("/api/transaction-categories");
 //         return data;
 //     }
 //     catch(error) {

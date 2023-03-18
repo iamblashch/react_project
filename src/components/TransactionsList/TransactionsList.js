@@ -1,28 +1,50 @@
 import { useMediaQuery } from 'react-responsive';
-import styles from '../TransactionsList/TransactionsList.module.scss';
-import { BiPencil } from 'react-icons/bi';
+import { useDispatch, useSelector } from 'react-redux';
 import { allTransactions } from 'redux/finances/finances-operations';
-
-
-// Nastya
-import { useDispatch } from 'react-redux';
 import { deleteTransaction } from 'redux/finances/finances-operations';
+// import financeSelectors from 'redux/finances/financial-selectors';
+
+import { BiPencil } from 'react-icons/bi';
+import styles from '../TransactionsList/TransactionsList.module.scss';
+import { useEffect } from 'react';
 
 export const TransactionsList = () => {
-  const dispatch = useDispatch()
-
-  const allTrans = () => {
+  const items = useSelector(state => state.finance.data)
+  
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
     dispatch(allTransactions())
-  }
+  }, [dispatch]);
 
   const onDeleteContact = id => {
-    console.log('hi!')
     dispatch(deleteTransaction(id));
+    dispatch(allTransactions())
   };
 
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-width: 768px)',
   });
+
+  const elements = items?.map(({id, type, transactionDate, categoryId, comment, amount}) => { 
+    return (<tr key={id} className={styles.tableRow}>
+                  <td className={styles.tableData}>{transactionDate}</td>
+                  <td className={styles.tableData}>{type}</td>
+                  <td className={styles.tableData}>{categoryId.name}</td>
+                  <td className={styles.tableData}>{comment}</td>
+                  <td className={styles.tableData_EXPENSE}>{amount}</td>
+                  <td className={styles.tableDataBtns}>
+                    <button onClick={() => {
+                      onDeleteContact(id)
+                    }} className={styles.mobailTrItem__btnDelete}>
+                      Delete
+                    </button>
+                    <button className={styles.mobailTrItem__btnEdit}>
+                      <BiPencil />
+                    </button>
+                  </td>
+                </tr>)
+  })
   return (
     <>
       {isDesktopOrLaptop && (
@@ -52,24 +74,7 @@ export const TransactionsList = () => {
           <div className={styles.tableScrollBox}>
             <table className={styles.dataTable}>
               <tbody className={styles.tableBody}>
-                <tr className={styles.tableRow}>
-                  <td className={styles.tableData}>04.01.19</td>
-                  <td className={styles.tableData}>-</td>
-                  <td className={styles.tableData}>Other</td>
-                  <td className={styles.tableData}>Gift for your wife</td>
-                  <td className={styles.tableData_EXPENSE}>300.00</td>
-                  <td className={styles.tableDataBtns}>
-                    <button onClick={() => {
-                      console.log('click')
-                      allTrans()
-                    }} className={styles.mobailTrItem__btnDelete}>
-                      Delete
-                    </button>
-                    <button className={styles.mobailTrItem__btnEdit}>
-                      <BiPencil />
-                    </button>
-                  </td>
-                </tr>
+                {elements}
               </tbody>
             </table>
           </div>
