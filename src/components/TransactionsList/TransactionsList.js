@@ -19,7 +19,9 @@ export const TransactionsList = () => {
 
   const onDeleteContact = id => {
     dispatch(deleteTransaction(id));
+    setTimeout(() => {
     dispatch(allTransactions());
+  }, 100);
   };
 
   const isDesktopOrLaptop = useMediaQuery({
