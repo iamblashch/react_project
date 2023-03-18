@@ -176,7 +176,7 @@ const ModalAddTransaction = () => {
                     autoComplete="off"
                     className={styled.visuallyHidden}
                     type="text"
-                    value={(values.categoryId = incomeCategory.id)}
+                    // value={(values.categoryId = incomeCategory.id)}
                     onChange={handleChange}
                   />
                 </>
