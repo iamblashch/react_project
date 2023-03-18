@@ -1,6 +1,6 @@
 .section {
-  position: relative;
-  
+  // position: relative;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,6 +12,8 @@
   background-size: cover;
   
   @media screen and (min-width: 768px) {
+    height: 100%;
+    
     padding-top: 60px;
     padding-bottom: 48px;
     
@@ -21,7 +23,7 @@
   
   @media screen and (min-width: 1280px) {
     height: 100vh;
-    
+
     padding-top: 52px;
     padding-bottom: 52px;
 
