@@ -8,7 +8,6 @@ import {
 } from "./finances-operations";
 import { logout, current } from "redux/auth/auth-operations";
 import { toast } from "react-toastify";
-// import { ConstructionOutlined } from "@mui/icons-material";
 
 const initialState = {
   data: [],

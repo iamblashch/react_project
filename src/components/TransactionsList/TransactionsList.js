@@ -15,6 +15,7 @@ export const TransactionsList = () => {
 
   useEffect(() => {
     dispatch(allTransactions());
+    
   }, [dispatch]);
 
   const onDeleteContact = id => {
@@ -31,7 +32,7 @@ export const TransactionsList = () => {
       return (
         <tr key={id} className={styles.tableRow}>
           <td className={styles.tableData}>{transactionDate}</td>
-          <td className={styles.tableData}>{type}</td>
+          <td className={styles.tableData}>{type !== 'EXPENSE' ? '+' : '-'}</td>
           <td className={styles.tableData}>{categoryId.name}</td>
           <td className={styles.tableData}>{comment}</td>
           <td className={styles.tableData_EXPENSE}>{amount}</td>
