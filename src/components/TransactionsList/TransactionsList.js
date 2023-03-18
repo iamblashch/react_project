@@ -1,6 +1,8 @@
 import { useMediaQuery } from 'react-responsive';
 import styles from '../TransactionsList/TransactionsList.module.scss';
 import { BiPencil } from 'react-icons/bi';
+import { allTransactions } from 'redux/finances/finances-operations';
+
 
 // Nastya
 import { useDispatch } from 'react-redux';
@@ -8,6 +10,10 @@ import { deleteTransaction } from 'redux/finances/finances-operations';
 
 export const TransactionsList = () => {
   const dispatch = useDispatch()
+
+  const allTrans = () => {
+    dispatch(allTransactions())
+  }
 
   const onDeleteContact = id => {
     console.log('hi!')
@@ -55,7 +61,7 @@ export const TransactionsList = () => {
                   <td className={styles.tableDataBtns}>
                     <button onClick={() => {
                       console.log('click')
-                      onDeleteContact()
+                      allTrans()
                     }} className={styles.mobailTrItem__btnDelete}>
                       Delete
                     </button>

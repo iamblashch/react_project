@@ -2,49 +2,57 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import * as api from '../../shared/Api/auth';
 
-export const allTransactions = createAsyncThunk(
-  "transactions",
-  async (_, { rejectWithValue }) => {
-    try {
-      const transactions = await axios.get("https://wallet.goit.ua/api/transactions");
-      return transactions.data;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
-);
-
-
-
-// export const addTransaction = createAsyncThunk(
-//   "add",
-//   async (transaction, { rejectWithValue }) => {
+// export const allTransactions = createAsyncThunk(
+//   "transactions",
+//   async (_, { rejectWithValue }) => {
 //     try {
-//       const { data } = await axios.post("/api/transactions", transaction);
-//       const fixedData = {
-//         ...data,
-//         balanceAfter: Number(data.balanceAfter.toFixed(2)),
-//       };
-//       return fixedData;
+//       const transactions = await axios.get("https://wallet.goit.ua/api/transactions");
+//       return transactions.data;
 //     } catch (error) {
 //       return rejectWithValue(error.message);
 //     }
 //   }
 // );
-export const addTransaction = createAsyncThunk(
 
-  'transaction/add',
-  async (transaction, { rejectWithValue, getState }) => {
+export const allTransactions = createAsyncThunk(
+  'transaction/get',
+  async (data, { rejectWithValue }) => {
     try {
-      const { auth } = getState();
-      const result = await api.Transaction(auth.token,transaction);
-      console.log('result :>> ', result);
-      console.log('transaction :>> ', transaction);
+      console.log('hi')
+      const result = await api.allTransactions(data);
+      console.log(result);
+
       return result;
     } catch ({ response }) {
-      console.log('response :>> ', response);
-      console.log('tansactin :>> ',transaction
-      );
+      return rejectWithValue(response.data.message);
+    }
+  }
+);
+
+
+export const addTransaction = createAsyncThunk(
+  'transaction/add',
+  async (data, { rejectWithValue }) => {
+    try {
+      const result = await api.addTransaction(data);
+      console.log(result);
+
+      return result;
+    } catch ({ response }) {
+      return rejectWithValue(response.data.message);
+    }
+  }
+);
+
+export const getCategories = createAsyncThunk(
+  'get/category',
+  async (_, { rejectWithValue, getState }) => {
+    try {
+      const { auth } = getState();
+      const result = await api.Categories(auth.token);
+      console.log('result :>> ', result);
+      return result;
+    } catch ({ response }) {
       return rejectWithValue(response.data);
     }
   }
@@ -63,19 +71,7 @@ export const getSummary = createAsyncThunk(
 );
 
 
-export const getCategories = createAsyncThunk(
-  'get/category',
-  async (_, { rejectWithValue, getState }) => {
-    try {
-      const { auth } = getState();
-      const result = await api.Categories(auth.token);
-      console.log('result :>> ', result);
-      return result;
-    } catch ({ response }) {
-      return rejectWithValue(response.data);
-    }
-  }
-);
+
 
 
 // Nastya

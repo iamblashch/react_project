@@ -1,16 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
-  allTransactions,
   getSummary,
   getCategories,
   addTransaction,
   deleteTransaction,
+  allTransactions
 } from "./finances-operations";
 import { logout, current } from "redux/auth/auth-operations";
 import { toast } from "react-toastify";
+import { ConstructionOutlined } from "@mui/icons-material";
 
 const initialState = {
-  data: null,
+  data: [],
   totalBalance: null,
   summary: null,
   error: null,
@@ -88,30 +89,23 @@ const financeSlice = createSlice({
           toast.error("Fatal error");
         }
       })
-      .addCase(addTransaction.pending, (state) => {
+    
+       .addCase(addTransaction.pending, state => {
         state.loading = true;
         state.error = null;
       })
       .addCase(addTransaction.fulfilled, (state, { payload }) => {
         state.loading = false;
-        if (payload) {
-          toast.success("Add successfull");
-        } else {
-          toast.error("Try later");
-        }
         state.data = [...state.data, payload];
-        state.totalBalance = payload.balanceAfter;
+        state.error = null;
+        state.isLogin = true;
       })
       .addCase(addTransaction.rejected, (state, { payload }) => {
         state.loading = false;
         state.error = payload;
-
-        if (payload === "Request failed with status code 409") {
-          toast.error("Error, try another one");
-        } else {
-          toast.error("Try later");
-        }
+        state.result = null;
       })
+
       .addCase(logout.pending, (state) => {
         state.loading = true;
         state.error = null;
