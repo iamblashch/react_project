@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { IoIosArrowDown } from 'react-icons/io';
-import {allCategoriesWithColors} from '../../assets/const'
+// import { useSelector } from 'react-redux';
+// import getCategories from "../../redux/finances/financial-selectors"
+
 import styled from './ModalSelect.module.scss';
 
 export default function ModalSelect({ options, onClick }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
   const toggling = () => setIsOpen(!isOpen);
-  console.log('object :>> ',allCategoriesWithColors);
+
   const onEnter = e => {
     if (e.code === 'Enter') toggling();
   };
@@ -16,6 +18,7 @@ export default function ModalSelect({ options, onClick }) {
     setIsOpen(false);
     onClick(option.id);
   };
+ 
   return (
     <div className={styled.dropDownContainer}>
       <div

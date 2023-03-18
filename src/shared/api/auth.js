@@ -40,4 +40,51 @@ export const getCurrent = async (token)=> {
     }
 }
 
+export const Categories = async (token)=> {
+    try {
+        setToken(token);
+        const {data} = await instance.get("/api/transaction-categories");
+        return data;
+    }
+    catch(error) {
+        setToken();
+        throw error;
+    }
+}
+
+export const Transaction = async (transaction,token)=> {
+    try {
+        setToken(token);
+        const {data} = await instance.post("/api/transactions,",transaction);
+        return data;
+    }
+    catch(error) {
+        setToken();
+        throw error;
+    }
+}
+
+export const getSummary = async (token)=> {
+    try {
+        setToken(token);
+        const {data} = await instance.get("/api/transaction-categories");
+        return data;
+    }
+    catch(error) {
+        setToken();
+        throw error;
+    }
+}
+export const deleteTransaction = async (token)=> {
+    try {
+        setToken(token);
+        const {data} = await instance.delete("/api/transaction-categories");
+        return data;
+    }
+    catch(error) {
+        setToken();
+        throw error;
+    }
+}
+
 export default instance;

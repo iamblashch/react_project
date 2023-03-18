@@ -16,6 +16,7 @@ const globalSlice = createSlice({
   reducers: {
     toggleModalAddTransaction: (state) => {
       state.isModalAddTransactionOpen = !state.isModalAddTransactionOpen;
+      
     },
     toggleModalLogout: (state) => {
       state.isModalLogoutOpen = !state.isModalLogoutOpen;

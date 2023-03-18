@@ -63,7 +63,6 @@ const financeSlice = createSlice({
       })
       .addCase(getSummary.rejected, (state, { payload }) => {
         state.loading = false;
-        console.log("getSummary", payload);
         state.error = payload;
         if (payload) {
           toast.error("Fatal error");
@@ -106,7 +105,7 @@ const financeSlice = createSlice({
       .addCase(addTransaction.rejected, (state, { payload }) => {
         state.loading = false;
         state.error = payload;
-        console.log("addTransaction", payload);
+
         if (payload === "Request failed with status code 409") {
           toast.error("Error, try another one");
         } else {
@@ -163,123 +162,6 @@ const financeSlice = createSlice({
   },
 });
 
-// const financeSlice = createSlice({
-//   name: "finance",
-//   initialState,
-//   extraReducers: {
-//     [allTransactions.pending]: (state) => {
-//       state.loading = true;
-//       state.error = null;
-//     },
-//     [allTransactions.fulfilled]: (state, { payload }) => {
-//       state.loading = false;
-//       state.data = payload;
-//     },
-//     [allTransactions.rejected]: (state, { payload }) => {
-//       state.loading = false;
-//       console.log("allTransactions", payload);
-//       state.error = payload;
-//       if (payload) {
-//         toast.error("Fatal error");
-//       }
-//     },
-//     [getSummary.pending]: (state) => {
-//       state.loading = true;
-//       state.error = null;
-//     },
-//     [getSummary.fulfilled]: (state, { payload }) => {
-//       state.loading = false;
-//       state.summary = payload;
-//     },
-//     [getSummary.rejected]: (state, { payload }) => {
-//       state.loading = false;
-//       console.log("getSummary", payload);
-//       state.error = payload;
-//       if (payload) {
-//         toast.error("Fatal error");
-//       }
-//     },
-
-//     [getCategories.pending]: (state) => {
-//       state.loading = true;
-//       state.error = null;
-//     },
-//     [getCategories.fulfilled]: (state, { payload }) => {
-//       state.loading = false;
-//       state.categories = payload.map((obj, i) => {
-//         return obj.type === "EXPENSE"
-//           ? { ...obj, backgroundColor: colors[i] }
-//           : obj;
-//       });
-//     },
-//     [getCategories.rejected]: (state, { payload }) => {
-//       state.loading = false;
-//       console.log("getCategories", payload);
-//       state.error = payload;
-//       if (payload) {
-//         toast.error("Fatal error");
-//       }
-//     },
-//     [addTransaction.pending]: (state) => {
-//       state.loading = true;
-//       state.error = null;
-//     },
-//     [addTransaction.fulfilled]: (state, { payload }) => {
-//       state.loading = false;
-//       if (payload) {
-//         toast.success("Add successfull");
-//       } else {
-//         toast.error("Try later");
-//       }
-//       state.data = [...state.data, payload];
-//       state.totalBalance = payload.balanceAfter;
-//     },
-//     [addTransaction.rejected]: (state, { payload }) => {
-//       state.loading = false;
-//       state.error = payload;
-//       console.log("addTransaction", payload);
-//       if (payload === "Request failed with status code 409") {
-//         toast.error("Error, try another one");
-//       } else {
-//         toast.error("Try later");
-//       }
-//     },
-//     [logout.pending]: (state) => {
-//       state.loading = true;
-//       state.error = null;
-//     },
-//     [logout.fulfilled]: (state) => {
-//       state.loading = false;
-//       state.data = null;
-//       state.totalBalance = null;
-//       state.summary = null;
-//       state.error = null;
-//       state.categories = null;
-//     },
-//     [logout.rejected]: (state, { payload }) => {
-//       state.loading = false;
-//       if (payload) {
-//         toast.error("you are not authorized");
-//       } else {
-//         toast.error("try later");
-//       }
-//       state.error = payload;
-//     },
-
-//     [current.pending]: (state) => {
-//       state.loading = true;
-//       state.error = null;
-//     },
-//     [current.fulfilled]: (state, { payload }) => {
-//       state.loading = false;
-//       state.totalBalance = payload.balance;
-//     },
-//     [current.rejected]: (state, { payload }) => {
-//       state.loading = false;
-//       state.error = payload;
-//     },
-//   },
-// });
 
 export const { resetFinance } = financeSlice.actions;
 export const financeReducer = financeSlice.reducer;
