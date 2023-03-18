@@ -92,13 +92,15 @@ const financeSlice = createSlice({
     
        .addCase(addTransaction.pending, state => {
         state.loading = true;
-        state.error = null;
+         state.error = null;
       })
       .addCase(addTransaction.fulfilled, (state, { payload }) => {
         state.loading = false;
         state.data = [...state.data, payload];
         state.error = null;
         state.isLogin = true;
+        
+        state.totalBalance = payload;
       })
       .addCase(addTransaction.rejected, (state, { payload }) => {
         state.loading = false;
