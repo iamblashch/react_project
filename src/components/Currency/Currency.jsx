@@ -60,8 +60,8 @@ export const Currency = () => {
         <>
           <div className={scss.head}>
             <p className={scss.header}>Currency</p>
-            <p className={scss.header}>Buy</p>
-            <p className={scss.header}>Sell</p>
+            <p className={scss.header}>Purchase</p>
+            <p className={scss.header}>Sale</p>
           </div>
           <ul className={scss.list}>
             {request.currency?.map(({ currencyCodeA, rateSell, rateBuy }) => (

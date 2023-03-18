@@ -59,10 +59,13 @@ const ModalAddTransaction = () => {
   const dispatch = useDispatch();
 
   const categories = useSelector(financeSelectors.getCategories);
+
   const [chooseType, setChooseType] = useState(false);
   const [type, setType] = useState("EXPENSE");
+
   const startDate = new Date();
   const toastId = useRef("enterAmount");
+
   const expenseCategories = categories?.filter(
     (category) => category.type === "EXPENSE"
   );

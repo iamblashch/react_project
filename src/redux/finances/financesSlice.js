@@ -99,6 +99,7 @@ const financeSlice = createSlice({
         state.error = null;
         state.isLogin = true;
         state.totalBalance = payload;
+        console.log(payload.transactionDate)
       })
       .addCase(addTransaction.rejected, (state, { payload }) => {
         state.loading = false;
