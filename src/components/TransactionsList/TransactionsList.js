@@ -2,14 +2,16 @@ import { useMediaQuery } from 'react-responsive';
 import { useDispatch, useSelector } from 'react-redux';
 import { allTransactions } from 'redux/finances/finances-operations';
 import { deleteTransaction } from 'redux/finances/finances-operations';
-// import financeSelectors from 'redux/finances/financial-selectors';
+import financeSelectors from 'redux/finances/financial-selectors';
 
 import { BiPencil } from 'react-icons/bi';
 import styles from '../TransactionsList/TransactionsList.module.scss';
 import { useEffect } from 'react';
 
 export const TransactionsList = () => {
-  const items = useSelector(state => state.finance.data);
+  const items = useSelector(financeSelectors.getFilteredData);
+  // const categories = useSelector(financeSelectors.getCategories);
+  // console.log(categories)
 
   const dispatch = useDispatch();
 
