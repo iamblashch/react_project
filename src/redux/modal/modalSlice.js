@@ -1,9 +1,15 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
+// import {
+//   allTransactions,
+//   addTransaction,
+// } from 'redux/finance/finance-operation';
+
 import {
-  allTransactions,
   addTransaction,
-} from "redux/finance/finance-operation";
-import { logout } from "redux/session/auth-operation";
+  allTransactions,
+} from 'redux/finances/finances-operations';
+// import { logout } from "redux/session/auth-operation";
+import { logout } from 'redux/auth/auth-operations';
 
 const initialState = {
   isModalAddTransactionOpen: false,
@@ -11,7 +17,7 @@ const initialState = {
   isLoading: true,
 };
 const globalSlice = createSlice({
-  name: "global",
+  name: 'global',
   initialState,
   reducers: builder => {
     builder.addCase(toggleModalAddTransaction, state => {
@@ -51,8 +57,6 @@ const globalSlice = createSlice({
       });
   },
 });
-
-
 
 export const {
   toggleModalAddTransaction,
