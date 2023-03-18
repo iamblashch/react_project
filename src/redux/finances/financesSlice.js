@@ -140,15 +140,13 @@ const financeSlice = createSlice({
         state.loading = false;
         state.error = payload;
       })
-
-      // Nastya
     .addCase(deleteTransaction.pending, state => {
         state.loading = true;
         state.error = null;
       })
       .addCase(deleteTransaction.fulfilled, (state, { payload }) => {
         state.loading = false;
-        state.contacts = state.contacts.filter(item => item.id !== payload);
+        state.data = state.data.filter(item => item.id !== payload.id);
       })
       .addCase(deleteTransaction.rejected, (state, { payload }) => {
         state.loading = false;

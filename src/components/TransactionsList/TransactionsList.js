@@ -2,6 +2,8 @@ import { useMediaQuery } from 'react-responsive';
 import { useDispatch, useSelector } from 'react-redux';
 import { allTransactions } from 'redux/finances/finances-operations';
 import { deleteTransaction } from 'redux/finances/finances-operations';
+// import financeSelectors from 'redux/finances/financial-selectors';
+import { current } from 'redux/auth/auth-operations';
 
 import { BiPencil } from 'react-icons/bi';
 import styles from '../TransactionsList/TransactionsList.module.scss';
@@ -9,6 +11,8 @@ import { useEffect } from 'react';
 
 export const TransactionsList = () => {
   const items = useSelector(state => state.finance.data)
+  // const categories = useSelector(financeSelectors.getCategories)
+  // console.log(categories)
   
   const dispatch = useDispatch();
   
@@ -18,23 +22,23 @@ export const TransactionsList = () => {
 
   const onDeleteContact = id => {
     dispatch(deleteTransaction(id));
+    dispatch(allTransactions())
   };
 
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-width: 768px)',
   });
 
-  const elements = items.map(({id, transactionDate, comment, amount}) => { 
+  const elements = items?.map(({id, type, transactionDate, categoryId, comment, amount}) => { 
     return (<tr key={id} className={styles.tableRow}>
                   <td className={styles.tableData}>{transactionDate}</td>
-                  <td className={styles.tableData}>-</td>
-                  <td className={styles.tableData}>Other</td>
+                  <td className={styles.tableData}>{type}</td>
+                  <td className={styles.tableData}>{categoryId.name}</td>
                   <td className={styles.tableData}>{comment}</td>
                   <td className={styles.tableData_EXPENSE}>{amount}</td>
                   <td className={styles.tableDataBtns}>
                     <button onClick={() => {
-                      console.log('click')
-                      onDeleteContact()
+                      onDeleteContact(id)
                     }} className={styles.mobailTrItem__btnDelete}>
                       Delete
                     </button>
@@ -44,7 +48,6 @@ export const TransactionsList = () => {
                   </td>
                 </tr>)
   })
-
   return (
     <>
       {isDesktopOrLaptop && (
