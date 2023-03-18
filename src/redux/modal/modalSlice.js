@@ -5,6 +5,7 @@ import { createSlice } from '@reduxjs/toolkit';
 // } from 'redux/finance/finance-operation';
 
 import {
+  // allTransactions,
   addTransaction,
 
 } from "../finances/finances-operations";
@@ -38,15 +39,15 @@ const globalSlice = createSlice({
       .addCase(logout.rejected, state => {
         state.isModalLogoutOpen = false;
       })
-      .addCase(allTransactions.pending, state => {
-        state.isLoading = true;
-      })
-      .addCase(allTransactions.fulfilled, state => {
-        state.isLoading = false;
-      })
-      .addCase(allTransactions.rejected, state => {
-        state.isLoading = false;
-      })
+      // .addCase(allTransactions.pending, state => {
+      //   state.isLoading = true;
+      // })
+      // .addCase(allTransactions.fulfilled, state => {
+      //   state.isLoading = false;
+      // })
+      // .addCase(allTransactions.rejected, state => {
+      //   state.isLoading = false;
+      // })
       .addCase(addTransaction.pending, state => {
         state.isLoading = true;
       })

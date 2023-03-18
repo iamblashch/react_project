@@ -52,39 +52,38 @@ export const Categories = async (token)=> {
     }
 }
 
-export const Transaction = async (token)=> {
-    try {
-        setToken(token);
-        const {data} = await instance.post("/api/transactions");
-        return data;
-    }
-    catch(error) {
-        setToken();
-        throw error;
-    }
-}
+export const addTransaction = async transaction => {
+  const { data } = await instance.post('/api/transactions', transaction);
+  return data;
+};
 
-export const getSummary = async (token)=> {
-    try {
-        setToken(token);
-        const {data} = await instance.get("/api/transaction-categories");
-        return data;
-    }
-    catch(error) {
-        setToken();
-        throw error;
-    }
-}
-export const deleteTransaction = async (token)=> {
-    try {
-        setToken(token);
-        const {data} = await instance.delete("/api/transaction-categories");
-        return data;
-    }
-    catch(error) {
-        setToken();
-        throw error;
-    }
-}
+export const allTransactions = async () => {
+  const { data } = await instance.get('/api/transactions');
+  return data;
+};
+
+
+// export const getSummary = async (token)=> {
+//     try {
+//         setToken(token);
+//         const {data} = await instance.get("/api/transaction-categories");
+//         return data;
+//     }
+//     catch(error) {
+//         setToken();
+//         throw error;
+//     }
+// }
+// export const deleteTransaction = async (token)=> {
+//     try {
+//         setToken(token);
+//         const {data} = await instance.delete("/api/transaction-categories");
+//         return data;
+//     }
+//     catch(error) {
+//         setToken();
+//         throw error;
+//     }
+// }
 
 export default instance;

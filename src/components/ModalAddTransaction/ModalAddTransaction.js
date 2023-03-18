@@ -7,7 +7,7 @@ import { MdDateRange } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleModalAddTransaction } from "redux/modal/modalSlice";
 import financeSelectors from "redux/finances/financial-selectors";
-import { addTransaction } from "../../redux/finances/finances-operations";
+import { addTransaction } from 'redux/finances/finances-operations';
 import {Modal} from "components/Modal/Modal";
 import ModalSelect from "../ModalSelect/ModalSelect";
 import moment from "moment";
@@ -15,6 +15,8 @@ import * as Yup from 'yup';
 import "react-datetime/css/react-datetime.css";
 import styled from "./ModalAddTransaction.module.scss";
 import { toast } from "react-toastify";
+
+
 
 const validationSchema = Yup.object().shape({
   type: Yup.string()
@@ -57,6 +59,7 @@ const valid = function (current) {
 };
 const ModalAddTransaction = () => {
   const dispatch = useDispatch();
+
   const categories = useSelector(financeSelectors.getCategories);
   const [chooseType, setChooseType] = useState(false);
   const [type, setType] = useState("EXPENSE");
