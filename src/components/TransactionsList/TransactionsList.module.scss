@@ -13,6 +13,7 @@
   margin-bottom: 10px;
   display: flex;
   &_INCOME {
+    // composes: mobailTrItem;
     &::before {
       content: '';
       width: 5px;
@@ -20,6 +21,7 @@
     }
   }
   &_EXPENSE {
+    // composes: mobailTrItem;
     &::before {
       content: '';
       width: 5px;
@@ -198,13 +200,13 @@
     width: 120px;
   }
   &_INCOME {
-
+    // composes: tableData;
     color: var(--income-cl);
     text-align: right;
   }
 
   &_EXPENSE {
-
+    // composes: tableData;
     color: var(--expense-cl);
     text-align: right;
   }
