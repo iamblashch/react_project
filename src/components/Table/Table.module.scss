@@ -3,29 +3,32 @@
   flex-direction: column;
   width: 100%;
   padding-top: 32px;
+  margin-left: auto;
+  margin-right: auto;
   @media screen and (min-width: 320px) {
-    width: 440px;
+    width: 280px;
   }
 
-  @media screen and(min-width:768px) {
-    width: 350px;
+  @media screen and (min-width:768px) {
+    width: 336px;
     padding-top: 40px;
+    margin-right: 32px;
   }
 
-  @media screen and(min-width:1280px) {
-    width: 350px;
+  @media screen and (min-width:1280px) {
+    width: 395px;
     padding-top: 0;
+    margin-right: 16px;
   }
 }
 .select__wrapper {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   width: 100%;
   padding-bottom: 20px;
 
-  @media screen and(min-width:768px) {
-    flex-direction: row;
-  }
+
+ 
 }
 
 .table__wrapper {
@@ -40,6 +43,8 @@
 }
 
 .table__title {
+  width: 280px;
+  
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -52,6 +57,14 @@
   font-size: 18px;
   line-height: 1.5;
   background-color: #fff;
+  @media screen and (min-width:767px) {
+    width: 336px;
+  
+  }
+  @media screen and (min-width:1279px) {
+    width: 395px;
+  
+  }
 }
 
 .tableScrollBox::-webkit-scrollbar-track {
@@ -77,11 +90,11 @@
 
 .tableScrollBox {
   overflow-y: scroll;
-  @media screen and(min-width:768px) {
+  @media screen and (min-width:768px) {
     max-height: 30vh;
   }
 
-  @media screen and(min-width:1280px) {
+  @media screen and (min-width:1280px) {
     max-height: 42vh;
   }
 }

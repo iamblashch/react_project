@@ -3,9 +3,6 @@
   padding-left: 20px;
   padding-right: 20px;
   margin: 0 auto;
-  @media screen and (min-width: 479px) {
-    width: 480px;
-  }
   @media screen and (min-width: 767px) {
     width: 768px;
   }
@@ -23,12 +20,13 @@
 }
 .link {
   display: flex;
+  align-items: center;
   &__logo {
     width: 30px;
     height: 30px;
-    @media screen and (min-width: 479px) {
-      width: 40px;
+    @media screen and (min-width: 767px) {
       height: 40px;
+      width: 40px;
     }
   }
   &__title {
@@ -38,10 +36,11 @@
     line-height: 1.5;
     margin-left: 15px;
     transition: color 450ms ease;
-    @media screen and (min-width: 479px) {
-      margin-left: 20px;
+    margin-left: 20px;
+    font-size: 30px;
+    line-height: 1.5;
+    @media screen and (min-width: 767px) {
       font-size: 30px;
-      line-height: 1.5;
     }
   }
 }
@@ -84,7 +83,7 @@
     line-height: 1.5;
     margin-left: 8px;
     transition: color 250ms ease;
-    @media screen and (min-width: 479px) {
+    @media screen and (min-width: 767px) {
       display: block;
     }
   }
@@ -94,7 +93,7 @@
   display: flex;
 }
 .icon {
-  @media screen and (max-width: 479px) {
+  @media screen and (max-width: 767px) {
     display: none;
   }
 }

@@ -1,11 +1,14 @@
 import scss from './Chart.module.scss';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import financeSelectors from 'redux/finance/finance-selectors';
+import financeSelectors from '../../redux/finances/financial-selectors';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
+
+ 
+
 const dataNull = {
   labels: [],
   datasets: [
@@ -21,6 +24,7 @@ const dataNull = {
 };
 
 const Chart = ({ data, expenseSummaryChart, show }) => {
+  const totalBalance = useSelector(financeSelectors.getBalance);
   const isLoading = useSelector(financeSelectors.getLoading);
   return (
     <div className={scss.wrapper__chart}>
@@ -42,7 +46,7 @@ const Chart = ({ data, expenseSummaryChart, show }) => {
               />
               <div className={scss.balance__wrapper}>
                 <span className={scss.symbol}>&#8372;</span>
-                {expenseSummaryChart}
+                {totalBalance}
               </div>
             </>
           )}
@@ -64,10 +68,9 @@ const Chart = ({ data, expenseSummaryChart, show }) => {
                   },
                 }}
               />
-              css
               <div className={scss.balance__wrapper}>
                 <span className={scss.symbol}>&#8372;</span>
-                {expenseSummaryChart}
+                {totalBalance}
               </div>
             </>
           )}

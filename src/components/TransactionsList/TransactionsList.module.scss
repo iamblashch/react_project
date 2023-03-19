@@ -1,4 +1,5 @@
 @import '../../stylesheet/mixins.scss';
+@import '../../stylesheet/vars.scss';
 
 .mobailTrList {
   color: inherit;
@@ -12,19 +13,17 @@
   margin-bottom: 10px;
   display: flex;
   &_INCOME {
-    composes: mobailTrItem;
     &::before {
       content: '';
       width: 5px;
-      background-color: var(--income-cl);
+      background-color: var(--accent-green);
     }
   }
   &_EXPENSE {
-    composes: mobailTrItem;
     &::before {
       content: '';
       width: 5px;
-      background-color: var(--expense-cl);
+      background-color: var(--accent-pink);
     }
   }
 }
@@ -199,13 +198,13 @@
     width: 120px;
   }
   &_INCOME {
-    composes: tableData;
+
     color: var(--income-cl);
     text-align: right;
   }
 
   &_EXPENSE {
-    composes: tableData;
+
     color: var(--expense-cl);
     text-align: right;
   }

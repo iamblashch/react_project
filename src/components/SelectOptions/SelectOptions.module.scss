@@ -1,4 +1,4 @@
-@import "../../stylesheet/mixins";
+@import '../../stylesheet/mixins';
 
 .dropdown__first {
   position: relative;
@@ -42,13 +42,16 @@
   padding-right: 20px;
   cursor: pointer;
   z-index: 2;
+  border: 1px solid #000000;
+  border-radius: 30px;
 
-  @include mq(tablet) {
-    width: 50%;
-    padding-top: 13px;
-    padding-bottom: 13px;
-    padding-left: 16px;
-    padding-right: 16px;
+  @media screen and (min-width: 767px) {
+    height: 50px;
+    width: 160px;
+  }
+  @media screen and (min-width: 1279px) {
+    height: 50px;
+    width: 182px;
   }
 }
 

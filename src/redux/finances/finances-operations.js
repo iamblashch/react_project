@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+// import axios from "axios";
 import * as api from '../../shared/Api/auth';
 
 export const allTransactions = createAsyncThunk(
@@ -19,8 +19,6 @@ export const addTransaction = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       const result = await api.addTransaction(data);
-      console.log(result.transactionDate);
-      console.log(result);
       return result;
     } catch ({ response }) {
       return rejectWithValue(response.data.message);
@@ -45,7 +43,7 @@ export const getSummary = createAsyncThunk(
   "getSummary",
   async (period = "", { rejectWithValue }) => {
     try {
-      const { data } = await axios.get(`api/transactions-summary${period}`);
+      const data  = await api.getSummary(period);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -59,6 +57,7 @@ export const deleteTransaction = createAsyncThunk(
     try {
       const result = await api.deleteTransaction(id);
       return result;
+      
     } catch ({ response }) {
       return rejectWithValue(response.data.message);
     }

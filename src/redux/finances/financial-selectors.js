@@ -1,19 +1,6 @@
 import normalizedSate from 'servises/normalizedState';
+import { allMonths } from 'assets/const';
 
-const allMonths = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
 
 const getTotalBalance = state => state.finance.totalBalance;
 const getTransactionsData = state => state.finance.data;

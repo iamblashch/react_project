@@ -4,9 +4,9 @@ import Navigation from 'components/Navigation/Navigation';
 import { Balance } from 'components/Balance/Balance';
 import { Currency } from '../../components/Currency/Currency';
 
-import ButtonAddTransactions from '../../components/ButtonAddTransactions/ButtonAddTransactions'
-import ModalAddTransaction from "../../components/ModalAddTransaction/ModalAddTransaction" 
-import  globalSelectors  from '../../redux/modal/modal-selectors';
+import ModalAddTransaction from '../../components/ModalAddTransaction/ModalAddTransaction';
+import globalSelectors from '../../redux/modal/modal-selectors';
+import DiagramTab from 'components/DiagramTab/DiagramTab';
 
 import css from './SummaryPage.module.scss';
 
@@ -21,17 +21,15 @@ export const SummaryPage = () => {
             <div className={css.wrapper}>
               <div>
                 <Navigation />
-                <Balance />
+                {window.innerWidth > 767 ? <Balance /> : null }
               </div>
-              
+
               <div className={css.val}>
                 <Currency />
               </div>
             </div>
-
-            <div className={css.tab}>
-            </div>
-            <ButtonAddTransactions/>
+            <DiagramTab />
+            {/* <ButtonAddTransactions/> */}
           </div>
         </div>
         {showModal && <ModalAddTransaction />}

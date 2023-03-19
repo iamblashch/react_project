@@ -8,6 +8,7 @@ import { BiPencil } from 'react-icons/bi';
 import styles from '../TransactionsList/TransactionsList.module.scss';
 import { useEffect } from 'react';
 
+
 export const TransactionsList = () => {
   const items = useSelector(financeSelectors.getFilteredData);
 
@@ -22,15 +23,16 @@ export const TransactionsList = () => {
 
   const onDeleteContact = id => {
     dispatch(deleteTransaction(id));
+    // dispatch(allTransactions());
     setTimeout(() => {
     dispatch(allTransactions());
   }, 100);
   };
+  // const TITLE = 
 
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-width: 768px)',
-  });
-
+});
   const elements = items?.map(
     ({ id, type, transactionDate, category, comment, amount }) => {
       return (
@@ -39,7 +41,7 @@ export const TransactionsList = () => {
           <td className={styles.tableData}>{type !== 'EXPENSE' ? '+' : '-'}</td>
           <td className={styles.tableData}>{category}</td>
           <td className={styles.tableData}>{comment}</td>
-          <td className={styles.tableData_EXPENSE}>{amount}</td>
+          <td className={type === "EXPENSE" ? styles.tableData_EXPENSE : styles.tableData_INCOME}>{amount}</td>
           <td className={styles.tableDataBtns}>
             <button
               onClick={() => {
@@ -62,6 +64,7 @@ export const TransactionsList = () => {
     <>
       {isDesktopOrLaptop && (
         <div className={styles.tableTrList}>
+         
           <table className={styles.table}>
             <thead className={styles.tableHead}>
               <tr>
@@ -88,6 +91,7 @@ export const TransactionsList = () => {
             <table className={styles.dataTable}>
               <tbody className={styles.tableBody}>{elements}</tbody>
             </table>
+            {elements.length>0? '' : <h1 id='1' style={{textAlign:'center',marginTop:30}}>Please add a transaction</h1>}
           </div>
         </div>
       )}

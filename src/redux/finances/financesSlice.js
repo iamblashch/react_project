@@ -18,7 +18,7 @@ const initialState = {
   loading: false,
 };
 
-const colors = [
+export const colors = [
   'rgba(254, 208, 87, 1)',
   'rgba(255, 216, 208, 1)',
   'rgba(255, 190, 177, 1)',
@@ -82,7 +82,7 @@ const financeSlice = createSlice({
       })
       .addCase(getCategories.rejected, (state, { payload }) => {
         state.loading = false;
-        console.log('getCategories', payload);
+
         state.error = payload;
         if (payload) {
           toast.error('Fatal error');
@@ -145,19 +145,21 @@ const financeSlice = createSlice({
       })
       .addCase(deleteTransaction.fulfilled, (state, { payload }) => {
         state.loading = false;
-        const filteredData = state.data.filter(item => typeof item.amount === 'number');
-        let totalBalance = state.totalBalance;
-        filteredData.filter(item => {
-          totalBalance -= item.amount;
-        });
-        state.totalBalance = totalBalance
+        // state.data = [...state.data, payload];
+        // // const filteredData = state.data.filter(item => typeof item.amount === 'number');
+        // // let totalBalance = state.totalBalance;
+        // // filteredData.filter(item => {
+        // //   totalBalance -= item.amount;
+        // // });
+        // // state.data = state.data.filter(item => item.id !== payload);
+        // state.totalBalance = state.data.totalBalance ;
       })
       .addCase(deleteTransaction.rejected, (state, { payload }) => {
         state.loading = false;
         state.error = payload;
       });
   },
-});
+})
 
 export const { resetFinance } = financeSlice.actions;
 export const financeReducer = financeSlice.reducer;

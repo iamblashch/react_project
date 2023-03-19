@@ -67,17 +67,10 @@ export const deleteTransaction = async (id) => {
   return data;
 };
 
+export const getSummary = async (period) => {
+    const { data } = await instance.get(`/api/transactions-summary${period}`);
+    return data;
+  };
 
-// export const getSummary = async (token)=> {
-//     try {
-//         setToken(token);
-//         const {data} = await instance.get("/api/transaction-categories");
-//         return data;
-//     }
-//     catch(error) {
-//         setToken();
-//         throw error;
-//     }
-// }
 
 export default instance;

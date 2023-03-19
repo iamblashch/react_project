@@ -1,7 +1,7 @@
 import styles from '../LoginPage/LoginPage.module.scss';
 import loginImg from '../../assets/images/login-img.png';
 import LoginForm from "../../components/LoginForm/LoginForm"
-export const LoginPage = () => {
+const LoginPage = () => {
   return (
     <>
       <section className={styles.section}>
@@ -24,3 +24,4 @@ export const LoginPage = () => {
     </>
   );
 };
+export default LoginPage

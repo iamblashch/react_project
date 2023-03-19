@@ -7,7 +7,7 @@ import { TransactionsList } from '../../components/TransactionsList/Transactions
 import ButtonAddTransactions from '../../components/ButtonAddTransactions/ButtonAddTransactions'
 import ModalAddTransaction from "../../components/ModalAddTransaction/ModalAddTransaction" 
 import  globalSelectors  from '../../redux/modal/modal-selectors';
-// import { Route,Routes } from 'react-router-dom';
+
 
 import css from './DashboardPage.module.scss';
 
