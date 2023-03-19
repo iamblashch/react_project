@@ -1,13 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 import {
   getSummary,
   getCategories,
   addTransaction,
   deleteTransaction,
-  allTransactions
-} from "./finances-operations";
-import { logout, current } from "redux/auth/auth-operations";
-import { toast } from "react-toastify";
+  allTransactions,
+} from './finances-operations';
+import { logout, current } from 'redux/auth/auth-operations';
+import { toast } from 'react-toastify';
 
 const initialState = {
   data: [],
@@ -19,25 +19,25 @@ const initialState = {
 };
 
 const colors = [
-  "rgba(254, 208, 87, 1)",
-  "rgba(255, 216, 208, 1)",
-  "rgba(255, 190, 177, 1)",
-  "rgba(253, 148, 152, 1)",
-  "rgba(197, 186, 255, 1)",
-  "rgba(110, 120, 232, 1)",
-  "rgba(74, 86, 226, 1)",
-  "rgba(129, 225, 255, 1)",
-  "rgba(36, 204, 167, 1)",
-  "rgba(0, 173, 132, 1)",
-  "rgba(0, 200, 132, 1)",
+  'rgba(254, 208, 87, 1)',
+  'rgba(255, 216, 208, 1)',
+  'rgba(255, 190, 177, 1)',
+  'rgba(253, 148, 152, 1)',
+  'rgba(197, 186, 255, 1)',
+  'rgba(110, 120, 232, 1)',
+  'rgba(74, 86, 226, 1)',
+  'rgba(129, 225, 255, 1)',
+  'rgba(36, 204, 167, 1)',
+  'rgba(0, 173, 132, 1)',
+  'rgba(0, 200, 132, 1)',
 ];
 const financeSlice = createSlice({
-  name: "finance",
+  name: 'finance',
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
-      .addCase(allTransactions.pending, (state) => {
+      .addCase(allTransactions.pending, state => {
         state.loading = true;
         state.error = null;
       })
@@ -47,13 +47,13 @@ const financeSlice = createSlice({
       })
       .addCase(allTransactions.rejected, (state, { payload }) => {
         state.loading = false;
-        console.log("allTransactions", payload);
+        console.log('allTransactions', payload);
         state.error = payload;
         if (payload) {
-          toast.error("Fatal error");
+          toast.error('Fatal error');
         }
       })
-      .addCase(getSummary.pending, (state) => {
+      .addCase(getSummary.pending, state => {
         state.loading = true;
         state.error = null;
       })
@@ -65,41 +65,40 @@ const financeSlice = createSlice({
         state.loading = false;
         state.error = payload;
         if (payload) {
-          toast.error("Fatal error");
+          toast.error('Fatal error');
         }
       })
-      .addCase(getCategories.pending, (state) => {
+      .addCase(getCategories.pending, state => {
         state.loading = true;
         state.error = null;
       })
       .addCase(getCategories.fulfilled, (state, { payload }) => {
         state.loading = false;
         state.categories = payload.map((obj, i) => {
-          return obj.type === "EXPENSE"
+          return obj.type === 'EXPENSE'
             ? { ...obj, backgroundColor: colors[i] }
             : obj;
         });
       })
       .addCase(getCategories.rejected, (state, { payload }) => {
         state.loading = false;
-        console.log("getCategories", payload);
+        console.log('getCategories', payload);
         state.error = payload;
         if (payload) {
-          toast.error("Fatal error");
+          toast.error('Fatal error');
         }
       })
-    
-       .addCase(addTransaction.pending, state => {
+
+      .addCase(addTransaction.pending, state => {
         state.loading = true;
-         state.error = null;
+        state.error = null;
       })
       .addCase(addTransaction.fulfilled, (state, { payload }) => {
         state.loading = false;
         state.data = [...state.data, payload];
         state.error = null;
         state.isLogin = true;
-        state.totalBalance = payload;
-        console.log(payload.transactionDate)
+        state.totalBalance += payload.amount;
       })
       .addCase(addTransaction.rejected, (state, { payload }) => {
         state.loading = false;
@@ -107,11 +106,11 @@ const financeSlice = createSlice({
         state.result = null;
       })
 
-      .addCase(logout.pending, (state) => {
+      .addCase(logout.pending, state => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(logout.fulfilled, (state) => {
+      .addCase(logout.fulfilled, state => {
         state.loading = false;
         state.data = null;
         state.totalBalance = null;
@@ -122,13 +121,13 @@ const financeSlice = createSlice({
       .addCase(logout.rejected, (state, { payload }) => {
         state.loading = false;
         if (payload) {
-          toast.error("you are not authorized");
+          toast.error('you are not authorized');
         } else {
-          toast.error("try later");
+          toast.error('try later');
         }
         state.error = payload;
       })
-      .addCase(current.pending, (state) => {
+      .addCase(current.pending, state => {
         state.loading = true;
         state.error = null;
       })
@@ -140,13 +139,18 @@ const financeSlice = createSlice({
         state.loading = false;
         state.error = payload;
       })
-    .addCase(deleteTransaction.pending, state => {
+      .addCase(deleteTransaction.pending, state => {
         state.loading = true;
         state.error = null;
       })
       .addCase(deleteTransaction.fulfilled, (state, { payload }) => {
         state.loading = false;
-        state.data = state.data.filter(item => item.id !== payload.id);
+        const filteredData = state.data.filter(item => typeof item.amount === 'number');
+        let totalBalance = state.totalBalance;
+        filteredData.filter(item => {
+          totalBalance -= item.amount;
+        });
+        state.totalBalance = totalBalance
       })
       .addCase(deleteTransaction.rejected, (state, { payload }) => {
         state.loading = false;
@@ -154,7 +158,6 @@ const financeSlice = createSlice({
       });
   },
 });
-
 
 export const { resetFinance } = financeSlice.actions;
 export const financeReducer = financeSlice.reducer;

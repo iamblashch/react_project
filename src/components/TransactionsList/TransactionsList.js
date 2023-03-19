@@ -18,6 +18,8 @@ export const TransactionsList = () => {
     
   }, [dispatch]);
 
+  
+
   const onDeleteContact = id => {
     dispatch(deleteTransaction(id));
     setTimeout(() => {
