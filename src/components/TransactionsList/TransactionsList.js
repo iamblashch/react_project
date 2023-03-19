@@ -41,7 +41,7 @@ export const TransactionsList = () => {
           <td className={styles.tableData}>{type !== 'EXPENSE' ? '+' : '-'}</td>
           <td className={styles.tableData}>{category}</td>
           <td className={styles.tableData}>{comment}</td>
-          <td className={type === "EXPENSE" ? styles.tableData_EXPENSE : styles.tableData_INCOME}>{amount}</td>
+          {/* <td className={type === "EXPENSE" ? styles.tableData_EXPENSE : styles.tableData_INCOME}>{amount}</td> */}
           <td className={styles.tableDataBtns}>
             <button
               onClick={() => {
