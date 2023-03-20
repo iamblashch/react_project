@@ -35,14 +35,14 @@ const valid = function (current) {
 };
 export const EditModal = () => {
   const dispatch = useDispatch();
-  const items = useSelector(financeSelectors.getFilteredData);
-  const {id,transactionDate, category, comment, amount} = items
-  console.log('id :>> ', id);
+  // const items = useSelector(financeSelectors.getFilteredData);
+  // const {id,transactionDate, category, comment, amount} = items
+  // console.log('id :>> ', id);
 
   const categories = useSelector(financeSelectors.getCategories);
 
-  const [chooseType, setChooseType] = useState(false);
-  const [type, setType] = useState("EXPENSE");
+  const [chooseType] = useState(false);
+  const [type] = useState("EXPENSE");
 
   const startDate = new Date();
 
@@ -55,10 +55,10 @@ export const EditModal = () => {
     dispatch(toggleEditModal());
   };
 
-  const editTransaction = id => {
-    dispatch(editTransaction(id))
+  // const editTransaction = id => {
+  //   dispatch(editTransaction(id))
 
-  }
+  // }
 
 
 
@@ -173,7 +173,7 @@ export const EditModal = () => {
                 )}
               </div>
               <div className={styled.btnWrapper}>
-                <button  className={styled.btnSubmit} onClick = {() => {editTransaction(id)}}>
+                <button  className={styled.btnSubmit}>
                   SAVE
                 </button>
                 <button
