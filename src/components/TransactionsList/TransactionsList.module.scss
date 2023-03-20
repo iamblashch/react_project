@@ -254,4 +254,20 @@
   align-items: center;
   flex-direction: row-reverse;
 }
+.img {
+  width: 274px;
+  height: 250px;
+  margin-top: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  @media screen and (min-width: 768px) {
+    width: 210px;
+    height: 90%;
+    margin-bottom: 32px;
 
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 350px;
+  }
+}

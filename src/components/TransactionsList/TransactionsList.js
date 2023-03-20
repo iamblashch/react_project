@@ -10,18 +10,18 @@ import styles from '../TransactionsList/TransactionsList.module.scss';
 import { useEffect } from 'react';
 import { toggleEditModal } from 'redux/modal/modalSlice';
 import { EditModal } from 'components/Modal/EditModal/EditModal';
-import { editTransaction } from 'shared/Api/auth';
+
+import loginImg from '../../assets/images/login-img.png';
 
 export const TransactionsList = () => {
   const dispatch = useDispatch();
   const items = useSelector(financeSelectors.getFilteredData);
-  const modalOpen = useSelector(globalSelectors.getIsEditModal)
-
+  const modalOpen = useSelector(globalSelectors.getIsEditModal);
 
   useEffect(() => {
     dispatch(allTransactions());
   }, [dispatch]);
-  
+
   const onDeleteContact = id => {
     dispatch(deleteTransaction(id));
     // dispatch(allTransactions());
@@ -29,11 +29,10 @@ export const TransactionsList = () => {
       dispatch(allTransactions());
     }, 100);
   };
-  
+
   const isOpenModal = () => {
     dispatch(toggleEditModal());
   };
-
 
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-width: 768px)',
@@ -64,7 +63,10 @@ export const TransactionsList = () => {
             >
               Delete
             </button>
-            <button className={styles.mobailTrItem__btnEdit} onClick={isOpenModal}>
+            <button
+              className={styles.mobailTrItem__btnEdit}
+              onClick={isOpenModal}
+            >
               <BiPencil />
             </button>
           </td>
@@ -76,31 +78,31 @@ export const TransactionsList = () => {
     ({ id, type, transactionDate, category, comment, amount }) => {
       return (
         <ul key={id} className={styles.mobailTrItem__list}>
-          <li  className={styles.mobailTrItem__row}>
+          <li className={styles.mobailTrItem__row}>
             <span className={styles.mobailTrItem__cell}>Data</span>
-            <span className={styles.mobailTrItem__cell_value}>{transactionDate}</span>
+            <span className={styles.mobailTrItem__cell_value}>
+              {transactionDate}
+            </span>
           </li>
-          <li  className={styles.mobailTrItem__row}>
+          <li className={styles.mobailTrItem__row}>
             <span className={styles.mobailTrItem__cell}>Type</span>
             <span className={styles.mobailTrItem__cell_value}>{type}</span>
           </li>
-          <li  className={styles.mobailTrItem__row}>
+          <li className={styles.mobailTrItem__row}>
             <span className={styles.mobailTrItem__cell}>Category</span>
             <span className={styles.mobailTrItem__cell_value}>{category}</span>
           </li>
-          <li  className={styles.mobailTrItem__row}>
+          <li className={styles.mobailTrItem__row}>
             <span className={styles.mobailTrItem__cell}>Comment</span>
-            <span className={styles.mobailTrItem__cell_value}>
-              {comment}
-            </span>
+            <span className={styles.mobailTrItem__cell_value}>{comment}</span>
           </li>
-          <li  className={styles.mobailTrItem__row}>
+          <li className={styles.mobailTrItem__row}>
             <span className={styles.mobailTrItem__cell}>Sum</span>
             <span className={styles.mobailTrItem__cell_value_EXPENSE}>
               {amount}
             </span>
           </li>
-          <li  className={styles.mobailTrItem__row}>
+          <li className={styles.mobailTrItem__row}>
             <button className={styles.mobailTrItem__btnDelete}>Delete</button>
             <button className={styles.mobailTrItem__btnEdit}>
               <BiPencil />
@@ -145,9 +147,13 @@ export const TransactionsList = () => {
             {elements.length > 0 ? (
               ''
             ) : (
-              <h1 id="1" style={{ textAlign: 'center', marginTop: 30 }}>
-                Please add a transaction
-              </h1>
+              <div>
+                {' '}
+                <h1 id="1" style={{ textAlign: 'center', marginTop: 30 }}>
+                You are a bankrupt bitch
+                </h1>{' '}
+                <img src={loginImg} alt="boy" className={styles.img} />
+              </div>
             )}
           </div>
         </div>
@@ -156,10 +162,7 @@ export const TransactionsList = () => {
       {!isDesktopOrLaptop && (
         <div>
           <ul className={styles.mobailTrList}>
-            <li className={styles.mobailTrItem_EXPENSE}>
-                {elementsMobile}
-             
-            </li>
+            <li className={styles.mobailTrItem_EXPENSE}>{elementsMobile}</li>
           </ul>
         </div>
       )}
