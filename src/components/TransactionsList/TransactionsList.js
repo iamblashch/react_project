@@ -12,6 +12,10 @@ import { toggleEditModal } from 'redux/modal/modalSlice';
 import { EditModal } from 'components/Modal/EditModal/EditModal';
 import { editTransaction } from 'shared/Api/auth';
 
+
+
+import loginImg from '../../assets/images/login-img.png';
+
 export const TransactionsList = () => {
   const dispatch = useDispatch();
   const items = useSelector(financeSelectors.getFilteredData);
@@ -142,25 +146,27 @@ export const TransactionsList = () => {
             <table className={styles.dataTable}>
               <tbody className={styles.tableBody}>{elements}</tbody>
             </table>
-            {elements.length > 0 ? (
-              ''
-            ) : (
-              <h1 id="1" style={{ textAlign: 'center', marginTop: 30 }}>
-                Please add a transaction
-              </h1>
-            )}
+
+            {elements.length>0? '' : <div> <h1 id='1' style={{textAlign:'center',marginTop:30}}>Please add a transaction</h1>  <img src={loginImg} alt="boy" className={styles.img} />
+          </div>}
+
           </div>
         </div>
       )}
       {/* //Mobile version */}
       {!isDesktopOrLaptop && (
         <div>
+            {elements.length>0? '' : <div > <h1 id='1' style={{textAlign:'center',marginTop:30}}>Please add a transaction</h1>  <img src={loginImg} alt="boy" className={styles.img} />
+          </div>}
           <ul className={styles.mobailTrList}>
             <li className={styles.mobailTrItem_EXPENSE}>
+
                 {elementsMobile}
              
             </li>
+            
           </ul>
+         
         </div>
       )}
       {modalOpen && <EditModal />}

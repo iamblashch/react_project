@@ -164,7 +164,8 @@
   }
 
   @include mq(desktop) {
-    max-height: 65vh;
+    // max-height: 65vh;
+    height: 400px;
   }
 }
 
@@ -253,5 +254,20 @@
   gap: 8px;
   align-items: center;
   flex-direction: row-reverse;
+}
+
+.img {
+  width: 329px;
+  height: 290px;
+  margin-top: 25px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media screen and (min-width: 1280px) {
+    width: 329px;
+    height: 290px;
+    margin-bottom: 32px;
+   
+  }
 }
 

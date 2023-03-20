@@ -7,6 +7,7 @@ import { DashboardPage } from './pages/DashboardPage/DashboardPage';
 import { PublicRoute } from 'components/PublicRoute/PublicRoute';
 import { PrivateRoute } from 'components/PrivateRoute/PrivateRoute';
 import { SummaryPage } from './pages/SummaryPage/SummaryPage';
+import { CurrencyPage } from 'pages/CurrencyPage/CurrencyPage';
 
 const RegistrationPage = lazy(() =>
   import('pages/RegistrationPage/RegistrationPage')
@@ -22,6 +23,8 @@ export const UserRoutes = () => {
         <Route element={<PrivateRoute />}>
           <Route path="/" element={<DashboardPage />} />
           <Route path="/diagram" element={<SummaryPage />} />
+          <Route path="/currency" element={<CurrencyPage />} />
+
         </Route>
 
         <Route element={<PublicRoute />}>
