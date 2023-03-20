@@ -9,6 +9,9 @@ import styles from '../TransactionsList/TransactionsList.module.scss';
 import { useEffect } from 'react';
 
 
+import loginImg from '../../assets/images/login-img.png';
+
+
 export const TransactionsList = () => {
   const items = useSelector(financeSelectors.getFilteredData);
 
@@ -91,7 +94,8 @@ export const TransactionsList = () => {
             <table className={styles.dataTable}>
               <tbody className={styles.tableBody}>{elements}</tbody>
             </table>
-            {elements.length>0? '' : <h1 id='1' style={{textAlign:'center',marginTop:30}}>Please add a transaction</h1>}
+            {elements.length>0? '' : <div> <h1 id='1' style={{textAlign:'center',marginTop:30}}>Please add a transaction</h1>  <img src={loginImg} alt="boy" className={styles.img} />
+          </div>}
           </div>
         </div>
       )}
@@ -100,6 +104,7 @@ export const TransactionsList = () => {
         <div>
           <ul className={styles.mobailTrList}>
             <li className={styles.mobailTrItem_EXPENSE}>
+              
               <ul className={styles.mobailTrItem__list}>
                 <li className={styles.mobailTrItem__row}>
                   <span className={styles.mobailTrItem__cell}>Data</span>
@@ -138,7 +143,10 @@ export const TransactionsList = () => {
                 </li>
               </ul>
             </li>
+            
           </ul>
+          {elements.length>0? '' : <div> <h1 id='1' style={{textAlign:'center',marginTop:30}}>Please add a transaction</h1>  <img src={loginImg} alt="boy" className={styles.img} />
+          </div>}
         </div>
       )}
     </>
