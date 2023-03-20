@@ -24,6 +24,7 @@ const Table = ({
 
 
   const { arrayCategoriesSummary, newExpenseSummary, newIncomeSummary } = data;
+  // console.log('object :>> ', data);
 
   const periodForSelects = useSelector(financesSelector.getPeriodForStatistic);
 
@@ -70,9 +71,6 @@ const Table = ({
             })}
           </ul>
         </div>
-        {/* <p className={scss.text__messeng}>
-            You don't have expenses for this period
-          </p> */}
       </div>
       <ul className={scss.table__foot}>
         <li className={scss.table__bottom}>
