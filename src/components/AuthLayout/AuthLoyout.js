@@ -8,8 +8,12 @@ import { current } from "../../redux/auth/auth-operations";
 const AuthLayout = ({children}) => {
     const dispatch = useDispatch();
     const {token} = useSelector(getAuth);
+
     useEffect(()=> {
-        dispatch(getCategories())
+        if(token !== ''){
+            dispatch(getCategories())
+        }
+        
     }, [token])
 
     useEffect(()=> {

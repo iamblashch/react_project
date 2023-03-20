@@ -113,7 +113,6 @@ const financeSlice = createSlice({
       })
       .addCase(logout.fulfilled, state => {
         state.loading = false;
-        // state.data = null;
         state.totalBalance = null;
         state.summary = null;
         state.error = null;
