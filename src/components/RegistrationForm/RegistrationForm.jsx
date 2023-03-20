@@ -1,7 +1,7 @@
 ///REACT
 import { useState } from 'react';
 
-import { useDispatch,useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 ///STYLE
 import Style from './RegistrationForm.module.scss';
 ///COMPONENT
@@ -20,8 +20,7 @@ import { FaUser } from 'react-icons/fa';
 ///
 import { getError } from '../../redux/auth/auth-selectors';
 
-import { NavLink } from "react-router-dom";
-
+import { NavLink } from 'react-router-dom';
 
 const RegistrationForm = () => {
   const [stateRegistr, setStateRegistr] = useState(initialState);
@@ -41,13 +40,13 @@ const RegistrationForm = () => {
   };
 
   const hendlSubmit = e => {
+    
     setPasswordLength(false);
     setDublicat(false);
     e.preventDefault();
     if (stateRegistr.password !== stateRegistr.confirmPassword) {
       setDublicat(prevState => !prevState);
       return;
-
     } else if (stateRegistr.password.length < 5) {
       setPasswordLength(prevState => !prevState);
       return;
@@ -59,7 +58,6 @@ const RegistrationForm = () => {
       };
       dispatch(register(payload));
       setStateRegistr(initialState);
-
     }
   };
 
@@ -69,24 +67,16 @@ const RegistrationForm = () => {
       {passwordLength && (
         <p className={Style.errorText}>Password must be 5 or more characters</p>
       )}
-      {error && <p className={Style.errorText}>{error}</p>}
+      {error && !dublicat && !passwordLength && <p className={Style.errorText}>{error}</p>}
       {dublicat && <p className={Style.errorText}>Enter the same password</p>}
       <form className={Style.RegisterForm} onSubmit={hendlSubmit}>
-        {!error ? (
-          <TextField
-            icon={<MdEmail className={Style.Icons} />}
-            value={stateRegistr.email}
-            onChange={hendleChange}
-            {...fields.email}
-          />
-        ) : (
-          <TextField
-            icon={<MdEmail className={Style.Icons} />}
-            value={stateRegistr.email}
-            onChange={hendleChange}
-            {...fields.email}
-          />
-        )}
+        <TextField
+          icon={<MdEmail className={Style.Icons} />}
+          value={stateRegistr.email}
+          onChange={hendleChange}
+          {...fields.email}
+        />
+
         <TextField
           icon={<AiFillLock className={Style.Icons} />}
           value={stateRegistr.password}
@@ -94,24 +84,26 @@ const RegistrationForm = () => {
           {...fields.password}
         />
         <div className={Style.containerPasswordBar}>
-        <TextField
-          icon={<AiFillLock className={Style.Icons} />}
-          value={stateRegistr.confirmPassword}
-          onChange={hendleChange}
-          {...fields.confirmPassword}
-        />
+          <TextField
+            icon={<AiFillLock className={Style.Icons} />}
+            value={stateRegistr.confirmPassword}
+            onChange={hendleChange}
+            {...fields.confirmPassword}
+          />
           <PaswordLineBar stateRegistr={stateRegistr} />
-          </div>
+        </div>
         <TextField
           icon={<FaUser className={Style.Icons} />}
           value={stateRegistr.username}
           onChange={hendleChange}
           {...fields.username}
         />
-        
+
         <ButtonCurrent name={`REGISTER`} />
       </form>
-      <NavLink to="/login"><ButtonConversion name={`LOG IN`} /></NavLink>
+      <NavLink to="/login">
+        <ButtonConversion name={`LOG IN`} />
+      </NavLink>
     </>
   );
 };
