@@ -8,6 +8,7 @@ import {
 } from './finances-operations';
 import { logout, current } from 'redux/auth/auth-operations';
 import { toast } from 'react-toastify';
+import { login} from "../auth/auth-operations";
 
 const initialState = {
   data: [],
@@ -112,7 +113,7 @@ const financeSlice = createSlice({
       })
       .addCase(logout.fulfilled, state => {
         state.loading = false;
-        state.data = null;
+        // state.data = null;
         state.totalBalance = null;
         state.summary = null;
         state.error = null;
@@ -145,19 +146,18 @@ const financeSlice = createSlice({
       })
       .addCase(deleteTransaction.fulfilled, (state, { payload }) => {
         state.loading = false;
-        // state.data = [...state.data, payload];
-        // // const filteredData = state.data.filter(item => typeof item.amount === 'number');
-        // // let totalBalance = state.totalBalance;
-        // // filteredData.filter(item => {
-        // //   totalBalance -= item.amount;
-        // // });
-        // // state.data = state.data.filter(item => item.id !== payload);
-        // state.totalBalance = state.data.totalBalance ;
+        const index = state.data.findIndex(item => item.id === payload);
+        const deleteTransaction = state.data[index]
+        state.data.splice(index,1)
+        state.totalBalance -= deleteTransaction.amount;
       })
       .addCase(deleteTransaction.rejected, (state, { payload }) => {
         state.loading = false;
         state.error = payload;
-      });
+      })
+      .addCase(login.fulfilled, (state, {payload}) => {
+        state.totalBalance = payload.user.balance
+    })
   },
 })
 

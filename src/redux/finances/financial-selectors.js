@@ -18,6 +18,7 @@ const getFilteredData = state => {
     transactionDate: new Date(data.transactionDate),
   }))
   .sort((a, b) => b.transactionDate - a.transactionDate);
+
   const categories = getCategories(state)?.reduce((acc, cur) => {
     return { ...acc, [cur.id]: cur.name };
   }, {});

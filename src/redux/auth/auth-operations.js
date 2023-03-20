@@ -1,5 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { getCategories } from 'redux/finances/finances-operations';
 import * as api from '../../shared/Api/auth';
+
 
 export const register = createAsyncThunk(
   'auth/register',
@@ -13,6 +15,7 @@ export const register = createAsyncThunk(
       return rejectWithValue(response.data);
     }
   }
+  
 );
 
 export const login = createAsyncThunk(
