@@ -2,14 +2,14 @@ import normalizedSate from 'servises/normalizedState';
 import { allMonths } from 'assets/const';
 
 
-const getTotalBalance = state => state.finance.totalBalance;
-const getTransactionsData = state => state.finance.data;
+export const getTotalBalance = state => state.finance.totalBalance;
+export const getTransactionsData = state => state.finance.data;
 const getCategories = state => state.finance.categories;
 const getSummary = state => state.finance.summary;
 const getError = state => state.finance.error;
 const getLoading = state => state.finance.loading;
 
-const getBalance = state => normalizedSate(getTotalBalance(state));
+export const getBalance = state => normalizedSate(getTotalBalance(state));
 
 const getFilteredData = state => {
   const sortedData = getTransactionsData(state)

@@ -1,39 +1,17 @@
-import { useState, useRef } from "react";
+import { Modal } from 'components/Modal/Modal';
+import { toggleEditModal } from 'redux/modal/modalSlice';
+import styled from './EditModal.module.scss';
+import { useState} from "react";
 import Datetime from "react-datetime";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { IconContext } from "react-icons";
 import { GrClose } from "react-icons/gr";
 import { MdDateRange } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleModalAddTransaction } from "redux/modal/modalSlice";
 import financeSelectors from "redux/finances/financial-selectors";
-import { addTransaction } from 'redux/finances/finances-operations';
-import {Modal} from "components/Modal/Modal";
-import ModalSelect from "../ModalSelect/ModalSelect";
 import moment from "moment";
-import * as Yup from 'yup'; 
+
 import "react-datetime/css/react-datetime.css";
-import styled from "./ModalAddTransaction.module.scss";
-import { toast } from "react-toastify";
-
-const validationSchema = Yup.object().shape({
-  type: Yup.string()
-     .required('Type Qis required'),
-  amount: Yup.string('Enter your money')
-     .min(0)
-     .max(10, 'Very large amount, no more than 10 characters')
-     .matches(
-       /^(?:\d*\.)?\d+$/,'Only positive amount')
-     .required('Enter the amount, only numbers and comas'),
-  comment: Yup.string()
-     .max(15, 'No more than 15 characters')
-  .matches(/^[a-zA-Z\s]+$/, 'Only letters are allowed'),
-  categoryId: Yup.string('Choose a category')
-     .required('Category is required'),
-  transactionDate: Yup.date()
-  .required('Date is required'),
-});
-
 
 const handleAmount = (value) => {
   if (!value || Number.isNaN(Number(value))) return value;
@@ -55,8 +33,11 @@ const valid = function (current) {
   const tommorow = moment().subtract(0, "day");
   return current.isBefore(tommorow);
 };
-const ModalAddTransaction = () => {
+export const EditModal = () => {
   const dispatch = useDispatch();
+  const items = useSelector(financeSelectors.getFilteredData);
+  const {id,transactionDate, category, comment, amount} = items
+  console.log('id :>> ', id);
 
   const categories = useSelector(financeSelectors.getCategories);
 
@@ -64,58 +45,22 @@ const ModalAddTransaction = () => {
   const [type, setType] = useState("EXPENSE");
 
   const startDate = new Date();
-  const toastId = useRef("enterAmount");
 
-  const expenseCategories = categories?.filter(
-    (category) => category.type === "EXPENSE"
-  );
 
   const incomeCategory = categories?.find(
     (category) => category.type === "INCOME"
   );
 
   const isCloseModal = () => {
-    dispatch(toggleModalAddTransaction());
+    dispatch(toggleEditModal());
   };
 
-  const handleChangeType = () => {
-    setChooseType(!chooseType);
-    setType(chooseType ? "EXPENSE" : "INCOME");
-  };
+  const editTransaction = id => {
+    dispatch(editTransaction(id))
 
-  const enterByFocus = (e) => {
-    if (e.keyCode === 13) {
-      handleChangeType();
-    }
-  };
+  }
 
-  const handleSubmitForm = ({
-    type,
-    amount,
-    comment,
-    categoryId,
-    transactionDate,
-  }) => {
-    const normalizedAmount = type === "EXPENSE" ? -amount : amount;
 
-    if (amount === "0") {
-      if (!toast.isActive(toastId.current)) {
-        toastId.current = toast.error("Enter amount!");
-      }
-      return;
-    }
-
-    dispatch(
-      addTransaction({
-        type,
-        amount: normalizedAmount,
-        comment,
-        categoryId,
-        transactionDate,
-      })
-    );
-    isCloseModal();
-  };
 
   return (
     <Modal closeModal={isCloseModal}>
@@ -135,8 +80,6 @@ const ModalAddTransaction = () => {
             categoryId: "",
             transactionDate: startDate,
           }}
-          validationSchema={validationSchema}
-          onSubmit={handleSubmitForm}
           enableReinitialize
           validateOnBlur
         >
@@ -149,29 +92,16 @@ const ModalAddTransaction = () => {
             setFieldValue,
           }) => (
             <Form className={styled.form}>
-              <h1 className={styled.form__title}>Add transaction</h1>
+              <h1 className={styled.form__title}>Edit transaction</h1>
               <div className={styled.checkbox}>
                 <span
                   className={`${styled.checkboxIncome} ${
                     chooseType && styled.checkboxChecked
                   }`}
                 >
-                  Income
+                  Income /
                 </span>
-                <label htmlFor="type" className={styled.checkboxLabel}>
-                  <input
-                    type="checkbox"
-                    value="type"
-                    checked={chooseType}
-                    readOnly
-                  />
-                  <span
-                    onKeyDown={enterByFocus}
-                    tabIndex="0"
-                    onClick={handleChangeType}
-                    className={styled.checkboxSwitch}
-                  ></span>
-                </label>
+              
                 <span
                   className={`${styled.checkboxExpense} ${
                     !chooseType && styled.checkboxChecked
@@ -192,10 +122,6 @@ const ModalAddTransaction = () => {
                 </>
               ) : (
                 <div className={styled.category}>
-                  <ModalSelect
-                    options={expenseCategories}
-                    onClick={(setId) => setFieldValue("categoryId", setId)}
-                  />
                   {errors.categoryId && touched.categoryId && (
                     <div className={styled.categoryError}>{errors.categoryId}</div>
                   )}
@@ -247,15 +173,15 @@ const ModalAddTransaction = () => {
                 )}
               </div>
               <div className={styled.btnWrapper}>
-                <button className={styled.btnSubmit} type="submit">
-                  Add
+                <button  className={styled.btnSubmit} onClick = {() => {editTransaction(id)}}>
+                  SAVE
                 </button>
                 <button
                   className={styled.btnCancel}
                   type="button"
                   onClick={isCloseModal}
                 >
-                  Cancel
+                  CANEL
                 </button>
               </div>
             </Form>
@@ -265,4 +191,3 @@ const ModalAddTransaction = () => {
     </Modal>
   );
 };
-export default ModalAddTransaction;

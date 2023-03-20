@@ -64,4 +64,30 @@ export const deleteTransaction = createAsyncThunk(
       return rejectWithValue(response.data.message);
     }
   }
-);
+)
+export const editTransaction = createAsyncThunk(
+  'transactions/editTransaction',
+  async (data, { rejectWithValue }) => {
+    console.log('data :>> ', data);
+    try {
+      const result = await api.editTransaction(data);
+      console.log('result :>> ', data);
+      return result;
+    } catch ({ response }) {
+      return rejectWithValue(response.data.message);
+    }
+  }
+)
+
+//   export const editTransactions = createAsyncThunk(
+//     'transactions/editTransaction',
+//     async (data, thunkAPI) => {
+//       try {
+//         const response = await api.editTransaction(data);
+//         console.log('response :>> ', response);
+//         return response;
+//       } catch (e) {
+//         return thunkAPI.rejectWithValue(e.message);
+//       }
+//     }
+// );

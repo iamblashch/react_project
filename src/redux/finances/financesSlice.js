@@ -8,7 +8,7 @@ import {
 } from './finances-operations';
 import { logout, current } from 'redux/auth/auth-operations';
 import { toast } from 'react-toastify';
-import { login} from "../auth/auth-operations";
+import { login, register } from '../auth/auth-operations';
 
 const initialState = {
   data: [],
@@ -146,19 +146,22 @@ const financeSlice = createSlice({
       .addCase(deleteTransaction.fulfilled, (state, { payload }) => {
         state.loading = false;
         const index = state.data.findIndex(item => item.id === payload);
-        const deleteTransaction = state.data[index]
-        state.data.splice(index,1)
+        const deleteTransaction = state.data[index];
+        state.data.splice(index, 1);
         state.totalBalance -= deleteTransaction.amount;
       })
       .addCase(deleteTransaction.rejected, (state, { payload }) => {
         state.loading = false;
         state.error = payload;
       })
-      .addCase(login.fulfilled, (state, {payload}) => {
-        state.totalBalance = payload.user.balance
-    })
+      .addCase(login.fulfilled, (state, { payload }) => {
+        state.totalBalance = payload.user.balance;
+      })
+      .addCase(register.fulfilled, (state, { payload }) => {
+        state.totalBalance = payload.user.balance;
+      });
   },
-})
+});
 
 export const { resetFinance } = financeSlice.actions;
 export const financeReducer = financeSlice.reducer;

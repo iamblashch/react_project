@@ -2,22 +2,26 @@ import { useMediaQuery } from 'react-responsive';
 import { useDispatch, useSelector } from 'react-redux';
 import { allTransactions } from 'redux/finances/finances-operations';
 import { deleteTransaction } from 'redux/finances/finances-operations';
+import globalSelectors from 'redux/modal/modal-selectors';
 import financeSelectors from 'redux/finances/financial-selectors';
-import { nanoid } from '@reduxjs/toolkit';
 
 import { BiPencil } from 'react-icons/bi';
 import styles from '../TransactionsList/TransactionsList.module.scss';
 import { useEffect } from 'react';
+import { toggleEditModal } from 'redux/modal/modalSlice';
+import { EditModal } from 'components/Modal/EditModal/EditModal';
+import { editTransaction } from 'shared/Api/auth';
 
 export const TransactionsList = () => {
-  const items = useSelector(financeSelectors.getFilteredData);
-
   const dispatch = useDispatch();
+  const items = useSelector(financeSelectors.getFilteredData);
+  const modalOpen = useSelector(globalSelectors.getIsEditModal)
+
 
   useEffect(() => {
     dispatch(allTransactions());
   }, [dispatch]);
-
+  
   const onDeleteContact = id => {
     dispatch(deleteTransaction(id));
     // dispatch(allTransactions());
@@ -25,7 +29,11 @@ export const TransactionsList = () => {
       dispatch(allTransactions());
     }, 100);
   };
-  // const TITLE =
+  
+  const isOpenModal = () => {
+    dispatch(toggleEditModal());
+  };
+
 
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-width: 768px)',
@@ -56,7 +64,7 @@ export const TransactionsList = () => {
             >
               Delete
             </button>
-            <button className={styles.mobailTrItem__btnEdit}>
+            <button className={styles.mobailTrItem__btnEdit} onClick={isOpenModal}>
               <BiPencil />
             </button>
           </td>
@@ -155,6 +163,7 @@ export const TransactionsList = () => {
           </ul>
         </div>
       )}
+      {modalOpen && <EditModal />}
     </>
   );
 };

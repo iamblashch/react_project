@@ -12,10 +12,12 @@ import {
 import { logout } from "../auth/auth-operations";
 
 
+
 const initialState = {
   isModalAddTransactionOpen: false,
   isModalLogoutOpen: false,
   isLoading: true,
+  isEditModalOpen: false,
 };
 const globalSlice = createSlice({
   name: 'global',
@@ -27,6 +29,10 @@ const globalSlice = createSlice({
     },
     toggleModalLogout: (state) => {
       state.isModalLogoutOpen = !state.isModalLogoutOpen;
+    },
+    toggleEditModal: (state) => {
+      state.isEditModalOpen = !state.isEditModalOpen;
+      
     },
 
   },
@@ -57,7 +63,8 @@ const globalSlice = createSlice({
       })
       .addCase(addTransaction.rejected, state => {
         state.isLoading = false;
-      });
+      })
+   
   },
 });
 
@@ -66,5 +73,7 @@ export const {
   toggleModalLogout,
   toggleIsLoading,
   resetGlobal,
+  toggleEditModal
+
 } = globalSlice.actions;
 export const globalReducer = globalSlice.reducer;
