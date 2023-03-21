@@ -159,7 +159,7 @@ export const TransactionsList = () => {
               <div>
                 {' '}
                 <h1 id="1" style={{ textAlign: 'center', marginTop: 30 }}>
-                  Please add a transaction
+                You're a bankrupt bitch, go study at GoIT
                 </h1>{' '}
                 <img src={loginImg} alt="boy" className={styles.img} />
               </div>
