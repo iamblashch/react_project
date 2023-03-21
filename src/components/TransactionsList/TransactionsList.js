@@ -111,7 +111,9 @@ export const TransactionsList = () => {
             </span>
           </li>
           <li className={styles.mobailTrItem__row}>
-            <button className={styles.mobailTrItem__btnDelete}>Delete</button>
+            <button className={styles.mobailTrItem__btnDelete}  onClick={() => {
+                onDeleteContact(id);
+              }}>Delete</button>
             <button key={id} className={styles.mobailTrItem__btnEdit}>
               <BiPencil />
               Edit
