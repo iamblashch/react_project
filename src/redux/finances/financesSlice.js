@@ -5,6 +5,7 @@ import {
   addTransaction,
   deleteTransaction,
   allTransactions,
+  editTransaction
 } from './finances-operations';
 import { logout, current } from 'redux/auth/auth-operations';
 import { toast } from 'react-toastify';
@@ -159,7 +160,20 @@ const financeSlice = createSlice({
       })
       .addCase(register.fulfilled, (state, { payload }) => {
         state.totalBalance = payload.user.balance;
-      });
+      })
+      // .addCase(editTransaction.pending, state => {
+      //   state.loading = true;
+      //   state.error = null;
+      // })
+      // .addCase(editTransaction.fulfilled, (state, { payload }) => {
+      //   state.loading = false;
+      //   const index = state.data.findIndex(item => item.id === payload.id);
+      //   state.data[index] = payload;
+      // })
+      // .addCase(editTransaction.rejected, (state, { error }) => {
+      //   state.loading = false;
+      //   state.error = error.message;
+      // });
   },
 });
 

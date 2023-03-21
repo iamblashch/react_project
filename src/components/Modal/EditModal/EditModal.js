@@ -1,68 +1,67 @@
 import { Modal } from 'components/Modal/Modal';
 import { toggleEditModal } from 'redux/modal/modalSlice';
 import styled from './EditModal.module.scss';
-import { useState} from "react";
-import Datetime from "react-datetime";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import { IconContext } from "react-icons";
-import { GrClose } from "react-icons/gr";
-import { MdDateRange } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
-import financeSelectors from "redux/finances/financial-selectors";
-import moment from "moment";
+import { useState } from 'react';
+import Datetime from 'react-datetime';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { IconContext } from 'react-icons';
+import { GrClose } from 'react-icons/gr';
+import { MdDateRange } from 'react-icons/md';
+import { useDispatch, useSelector } from 'react-redux';
+import financeSelectors from 'redux/finances/financial-selectors';
+import moment from 'moment';
 import { editTransaction } from 'redux/finances/finances-operations';
 
-import "react-datetime/css/react-datetime.css";
+import 'react-datetime/css/react-datetime.css';
 import { initialState } from 'components/RegistrationForm/Initial/initialState';
 
-const handleAmount = (value) => {
+const handleAmount = value => {
   if (!value || Number.isNaN(Number(value))) return value;
   const length = value.length;
-  const dot = value.indexOf(".");
+  const dot = value.indexOf('.');
   if (dot < 0) {
-    return value.concat(".00");
+    return value.concat('.00');
   }
   if (dot < length - 3) {
     return value.slice(0, dot + 3);
   }
 
   if (dot > length - 3) {
-    return value.padEnd(dot + 3, "0");
+    return value.padEnd(dot + 3, '0');
   }
   return value;
 };
 const valid = function (current) {
-  const tommorow = moment().subtract(0, "day");
+  const tommorow = moment().subtract(0, 'day');
   return current.isBefore(tommorow);
 };
-export const EditModal = ({editItem}) => {
-const {id,comment,amout} = editItem
+export const EditModal = ({ editItem }) => {
+  const { id, comment, amout } = editItem;
+  console.log('editItems :>> ', editItem);
 
   const dispatch = useDispatch();
-  const items = useSelector(financeSelectors.getFilteredData); 
   const categories = useSelector(financeSelectors.getCategories);
   const startDate = new Date();
   const [chooseType] = useState(false);
-  const [type] = useState("EXPENSE");
+  const [type] = useState('EXPENSE');
   const incomeCategory = categories?.find(
-    (category) => category.type === "INCOME"
+    category => category.type === 'INCOME'
   );
-
   const isCloseModal = () => {
     dispatch(toggleEditModal());
   };
 
   const onEditTransactions = () => {
-    dispatch(editTransaction(id))
-
-  }
+    dispatch(editTransaction(id));
+    dispatch(toggleEditModal())
+  };
 
   return (
     <Modal closeModal={isCloseModal}>
       <div className={styled.transaction}>
         <button onClick={isCloseModal} className={styled.buttonClose}>
           <IconContext.Provider
-            value={{ className: "global-class-name", size: "16px" }}
+            value={{ className: 'global-class-name', size: '16px' }}
           >
             <GrClose />
           </IconContext.Provider>
@@ -70,14 +69,14 @@ const {id,comment,amout} = editItem
         <Formik
           initialValues={{
             type: type,
-            amount: "",
-            // comment: "",
-            categoryId: "",
+            amount:  editItem.amount,
+            comment: editItem.comment,
+            categoryId:  editItem.categoryId,
             transactionDate: startDate,
-
           }}
           enableReinitialize
           validateOnBlur
+          onSubmit={(values) => dispatch(editTransaction(values.editItem.id)) }
         >
           {({
             errors,
@@ -97,7 +96,7 @@ const {id,comment,amout} = editItem
                 >
                   Income /
                 </span>
-              
+
                 <span
                   className={`${styled.checkboxExpense} ${
                     !chooseType && styled.checkboxChecked
@@ -119,7 +118,9 @@ const {id,comment,amout} = editItem
               ) : (
                 <div className={styled.category}>
                   {errors.categoryId && touched.categoryId && (
-                    <div className={styled.categoryError}>{errors.categoryId}</div>
+                    <div className={styled.categoryError}>
+                      {errors.categoryId}
+                    </div>
                   )}
                 </div>
               )}
@@ -131,9 +132,9 @@ const {id,comment,amout} = editItem
                     type="number"
                     placeholder="0.00"
                     className={styled.money}
-                    onBlur={(e) => {
+                    onBlur={e => {
                       const { value } = e.target;
-                      setFieldValue("amount", handleAmount(value));
+                      setFieldValue('amount', handleAmount(value));
                       handleBlur(e);
                     }}
                   />
@@ -145,8 +146,8 @@ const {id,comment,amout} = editItem
                   <Datetime
                     className={styled.date}
                     initialValue={startDate}
-                    onChange={(value) =>
-                      setFieldValue("transactionDate", value.toISOString())
+                    onChange={value =>
+                      setFieldValue('transactionDate', value.toISOString())
                     }
                     closeOnSelect={true}
                     timeFormat={false}
@@ -163,14 +164,19 @@ const {id,comment,amout} = editItem
                   placeholder={comment}
                   as="textarea"
                   className={styled.comment}
-                  value = {comment}
                 />
                 {errors.comment && touched.comment && (
                   <div className={styled.commentError}>{errors.comment}</div>
                 )}
               </div>
               <div className={styled.btnWrapper}>
-                <button type='submit' className={styled.btnSubmit} onClick = {()=>{onEditTransactions()}} >
+                <button
+                  type="submit"
+                  className={styled.btnSubmit}
+                  onClick={() => {
+                    onEditTransactions(id);
+                  }}
+                >
                   SAVE
                 </button>
                 <button

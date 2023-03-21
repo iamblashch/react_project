@@ -55,11 +55,9 @@ export const deleteTransaction = createAsyncThunk(
   'transaction/delete',
   async (id, { rejectWithValue }) => {
     try {
-      const result = await api.deleteTransaction(id);
-      console.log('result :>> ', result);
+      await api.deleteTransaction(id);
       return id;
-      
-      
+
     } catch ({ response }) {
       return rejectWithValue(response.data.message);
     }
@@ -71,10 +69,10 @@ export const editTransaction = createAsyncThunk(
     console.log('data :>> ', data);
     try {
       const result = await api.editTransaction(data);
-      console.log('result :>> ', data);
       return result;
     } catch ({ response }) {
       return rejectWithValue(response.data.message);
     }
   }
 )
+
