@@ -10,7 +10,6 @@ import styles from '../TransactionsList/TransactionsList.module.scss';
 import { useEffect } from 'react';
 import { toggleEditModal } from 'redux/modal/modalSlice';
 import { EditModal } from 'components/Modal/EditModal/EditModal';
-import { editTransaction } from 'redux/finances/finances-operations';
 
 import loginImg from '../../assets/images/login-img.png';
 

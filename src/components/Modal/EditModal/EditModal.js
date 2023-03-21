@@ -13,7 +13,6 @@ import moment from 'moment';
 import { editTransaction } from 'redux/finances/finances-operations';
 
 import 'react-datetime/css/react-datetime.css';
-import { initialState } from 'components/RegistrationForm/Initial/initialState';
 
 const handleAmount = value => {
   if (!value || Number.isNaN(Number(value))) return value;
@@ -36,7 +35,7 @@ const valid = function (current) {
   return current.isBefore(tommorow);
 };
 export const EditModal = ({ editItem }) => {
-  const { id, comment, amout } = editItem;
+  const { id, comment } = editItem;
   console.log('editItems :>> ', editItem);
 
   const dispatch = useDispatch();

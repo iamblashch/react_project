@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getCategories } from 'redux/finances/finances-operations';
+
 import * as api from '../../shared/Api/auth';
 
 

@@ -5,7 +5,6 @@ import {
   addTransaction,
   deleteTransaction,
   allTransactions,
-  editTransaction
 } from './finances-operations';
 import { logout, current } from 'redux/auth/auth-operations';
 import { toast } from 'react-toastify';
