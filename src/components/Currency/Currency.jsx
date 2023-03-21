@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { fetchCurrency } from '../../shared/api/currency.js';
+import { currencyFetch } from '../../shared/api/fetchСurrency';
 import useLocalStorage from '../../hooks/useLocalStorage';
 // import { fetchCurrency } from '../../shared/api/currency'; 
 
@@ -37,7 +37,7 @@ export const Currency = () => {
           return;
         }
 
-        const { data } = await fetchCurrency();
+        const { data } = await currencyFetch();
         const normalData = correctData(data);
         setRequest({ currency: normalData, time: Date.now() });
         setLoading(true);

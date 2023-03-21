@@ -7,7 +7,7 @@ import axios from 'axios';
 // instance.defaults.headers.common['Authorization'] =
 //   'u6tyTmbRYNTk3d4JugZFYkvtQ8PM108ncCEiGIYjOmj0';
 
-export const fetchCurrency = async () => {
+export const currencyFetch = async () => {
   const data = await axios.get('https://api.monobank.ua/bank/currency');
   return data;
 };
