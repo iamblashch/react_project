@@ -88,7 +88,7 @@
 }
 
 .tableHeader {
-  text-align: left;
+  text-align: center;
   font-weight: 700;
   font-size: 18px;
   line-height: 1.47;
@@ -100,7 +100,7 @@
   }
   &:last-child {
     padding-right: 20px;
-    text-align: right;
+    text-align: center;
     width: 130px;
   }
   @include mq(tablet) {
@@ -116,7 +116,7 @@
     }
     &:nth-child(5) {
       width: 118px;
-      text-align: right;
+      text-align: center;
     }
   }
   @include mq(desktop) {
@@ -185,7 +185,7 @@
 }
 
 .tableData {
-  text-align: left;
+  text-align: center;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.47;
@@ -203,13 +203,13 @@
   &_INCOME {
     // composes: tableData;
     color: var(--income-cl);
-    text-align: right;
+    text-align: center;
   }
 
   &_EXPENSE {
     // composes: tableData;
     color: var(--expense-cl);
-    text-align: right;
+    text-align: center;
   }
   @include mq(tablet) {
     width: 114px;
