@@ -10,6 +10,7 @@ import styles from '../TransactionsList/TransactionsList.module.scss';
 import { useEffect } from 'react';
 import { toggleEditModal } from 'redux/modal/modalSlice';
 import { EditModal } from 'components/Modal/EditModal/EditModal';
+import { editTransaction } from 'redux/finances/finances-operations';
 
 import loginImg from '../../assets/images/login-img.png';
 
@@ -24,14 +25,17 @@ export const TransactionsList = () => {
 
   const onDeleteContact = id => {
     dispatch(deleteTransaction(id));
-    // dispatch(allTransactions());
     setTimeout(() => {
       dispatch(allTransactions());
     }, 100);
   };
 
-  const isOpenModal = () => {
+  // const isOpenModal = () => {
+  //   dispatch(toggleEditModal());
+  // };
+  const isOpenModal = id => {
     dispatch(toggleEditModal());
+    dispatch(editTransaction(id))
   };
 
   const isDesktopOrLaptop = useMediaQuery({
@@ -64,8 +68,9 @@ export const TransactionsList = () => {
               Delete
             </button>
             <button
-              className={styles.mobailTrItem__btnEdit}
+              key={id}
               onClick={isOpenModal}
+              className={styles.mobailTrItem__btnEdit}
             >
               <BiPencil />
             </button>
@@ -104,7 +109,7 @@ export const TransactionsList = () => {
           </li>
           <li className={styles.mobailTrItem__row}>
             <button className={styles.mobailTrItem__btnDelete}>Delete</button>
-            <button className={styles.mobailTrItem__btnEdit}>
+            <button key={id} className={styles.mobailTrItem__btnEdit}>
               <BiPencil />
               Edit
             </button>
@@ -178,7 +183,7 @@ export const TransactionsList = () => {
           </ul>
         </div>
       )}
-      {modalOpen && <EditModal />}
+      {modalOpen && <EditModal id = {this.id} />}
     </>
   );
 };

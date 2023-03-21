@@ -78,16 +78,3 @@ export const editTransaction = createAsyncThunk(
     }
   }
 )
-
-//   export const editTransactions = createAsyncThunk(
-//     'transactions/editTransaction',
-//     async (data, thunkAPI) => {
-//       try {
-//         const response = await api.editTransaction(data);
-//         console.log('response :>> ', response);
-//         return response;
-//       } catch (e) {
-//         return thunkAPI.rejectWithValue(e.message);
-//       }
-//     }
-// );

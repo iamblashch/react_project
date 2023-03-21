@@ -10,6 +10,7 @@ import { MdDateRange } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import financeSelectors from "redux/finances/financial-selectors";
 import moment from "moment";
+import { editTransaction } from 'redux/finances/finances-operations';
 
 import "react-datetime/css/react-datetime.css";
 
@@ -33,11 +34,9 @@ const valid = function (current) {
   const tommorow = moment().subtract(0, "day");
   return current.isBefore(tommorow);
 };
-export const EditModal = () => {
+export const EditModal = (id) => {
+  console.log('id :>> ', id);
   const dispatch = useDispatch();
-  // const items = useSelector(financeSelectors.getFilteredData);
-  // const {id,transactionDate, category, comment, amount} = items
-  // console.log('id :>> ', id);
 
   const categories = useSelector(financeSelectors.getCategories);
 
@@ -55,10 +54,10 @@ export const EditModal = () => {
     dispatch(toggleEditModal());
   };
 
-  // const editTransaction = id => {
-  //   dispatch(editTransaction(id))
+  const onEditTransactions = id => {
+    dispatch(editTransaction(id))
 
-  // }
+  }
 
 
 
@@ -173,7 +172,7 @@ export const EditModal = () => {
                 )}
               </div>
               <div className={styled.btnWrapper}>
-                <button  className={styled.btnSubmit}>
+                <button type='submit' className={styled.btnSubmit} onClick = {onEditTransactions} >
                   SAVE
                 </button>
                 <button

@@ -1,9 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import {
-//   allTransactions,
-//   addTransaction,
-// } from 'redux/finance/finance-operation';
-
 import {
   allTransactions,
   addTransaction,
