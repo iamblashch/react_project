@@ -2,8 +2,6 @@ import { Header } from 'components/Header/Header';
 import { Currency } from '../../components/Currency/Currency';
 import Navigation from 'components/Navigation/Navigation';
 
-
-
 import registrationImg from '../../assets/images/registration-img.png'
 import styled from '../CurrencyPage/CurrencyPage.module.scss'
 

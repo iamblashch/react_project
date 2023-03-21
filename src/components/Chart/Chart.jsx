@@ -1,14 +1,13 @@
-import scss from './Chart.module.scss';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import financeSelectors from '../../redux/finances/financial-selectors';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 
+import scss from './Chart.module.scss';
+
 ChartJS.register(ArcElement, Tooltip, Legend);
-
  
-
 const dataNull = {
   labels: [],
   datasets: [

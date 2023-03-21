@@ -1,16 +1,17 @@
-import { useMediaQuery } from 'react-responsive';
+import { useState,useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
+
 import { allTransactions } from 'redux/finances/finances-operations';
 import { deleteTransaction } from 'redux/finances/finances-operations';
 import globalSelectors from 'redux/modal/modal-selectors';
 import financeSelectors from 'redux/finances/financial-selectors';
-import { useState } from 'react';
-import { BiPencil } from 'react-icons/bi';
-import styles from '../TransactionsList/TransactionsList.module.scss';
-import { useEffect } from 'react';
 import { toggleEditModal } from 'redux/modal/modalSlice';
+
+import { BiPencil } from 'react-icons/bi';
 import { EditModal } from 'components/Modal/EditModal/EditModal';
 
+import styles from '../TransactionsList/TransactionsList.module.scss';
 import loginImg from '../../assets/images/login-img.png';
 
 export const TransactionsList = () => {

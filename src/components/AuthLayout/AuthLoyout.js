@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAuth} from "redux/auth/auth-selectors";
 import { getCategories } from "redux/finances/finances-operations";
-
 import { current } from "../../redux/auth/auth-operations";
 
 const AuthLayout = ({children}) => {

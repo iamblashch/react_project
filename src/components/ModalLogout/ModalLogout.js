@@ -1,13 +1,11 @@
-
-import styled from "./ModalLogout.module.scss";
-import {Modal} from "components/Modal/Modal";
 import { useDispatch } from "react-redux";
-import { toggleModalLogout } from "redux/modal/modalSlice";
-import { logout } from "../../redux/auth/auth-operations";
 import { useNavigate } from "react-router-dom";
 
+import {Modal} from "components/Modal/Modal";
+import { toggleModalLogout } from "redux/modal/modalSlice";
+import { logout } from "../../redux/auth/auth-operations";
 
-
+import styled from "./ModalLogout.module.scss";
 
 export default function ModalLogout() {
   const dispatch = useDispatch();

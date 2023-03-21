@@ -1,13 +1,17 @@
-import scss from './DiagramTab.module.scss';
-import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+
 import Chart from 'components/Chart/Chart';
 import Table from 'components/Table/Table';
+
 import financesSelector from '../../redux/finances/financial-selectors';
 import { getSummary } from '../../redux/finances/finances-operations';
 import { current } from '../../redux/auth/auth-operations';
+
 import { allMonths } from '../../assets/const';
-import { toast } from 'react-toastify';
+
+import scss from './DiagramTab.module.scss';
 
 const DiagramTab = () => {
   const [monthForState, setMonthForState] = useState('Month');

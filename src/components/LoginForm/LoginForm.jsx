@@ -1,16 +1,21 @@
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+
 import TextField from '../../shared/Component/textField/textField';
 import fields from '../../shared/Component/textField/fields';
-import Style from '../../components/RegistrationForm/RegistrationForm.module.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
 import { ButtonCurrent } from '../../shared/Component/ButtonFrom/ButtonFrom';
 import { ButtonConversion } from '../../shared/Component/ButtonFrom/ButtonFrom';
-import { NavLink } from 'react-router-dom';
 import { Logo } from '../../shared/Component/LogoForm/logoForm';
+
+import { getError } from '../../redux/auth/auth-selectors';
+import { login } from '../../redux/auth/auth-operations';
+
 import { MdEmail } from 'react-icons/md';
 import { AiFillLock } from 'react-icons/ai';
-import { login } from '../../redux/auth/auth-operations';
-import { getError } from '../../redux/auth/auth-selectors';
+
+import Style from '../../components/RegistrationForm/RegistrationForm.module.scss';
+
 const LoginForm = () => {
   const [stateLogin, setSateLogin] = useState({ email: '', password: '' });
   const dispatch = useDispatch();

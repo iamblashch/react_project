@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { IoIosArrowDown } from 'react-icons/io';
-// import { useSelector } from 'react-redux';
-// import getCategories from "../../redux/finances/financial-selectors"
 
 import styled from './ModalSelect.module.scss';
 

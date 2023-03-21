@@ -1,4 +1,3 @@
-import styled from './SelectOptions.module.scss';
 import { useState, useEffect, useCallback } from "react";
 
 import { AiOutlineDown } from "react-icons/ai";
@@ -6,6 +5,8 @@ import { IconContext } from "react-icons";
 
 import Box from "@mui/material/Box";
 import ClickAwayListener from "@mui/base/ClickAwayListener";
+
+import styled from './SelectOptions.module.scss';
 
 const Select = ({ options, selected, setSelected, position = false }) => {
   const [isActive, setIsActive] = useState(false);

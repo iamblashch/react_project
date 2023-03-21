@@ -1,9 +1,8 @@
 ///REACT
 import { useState } from 'react';
-
+import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-///STYLE
-import Style from './RegistrationForm.module.scss';
+
 ///COMPONENT
 import { Logo } from '../../shared/Component/LogoForm/logoForm';
 import { PaswordLineBar } from './PasswordVerification/PasswordLineBar';
@@ -13,14 +12,16 @@ import { ButtonConversion } from '../../shared/Component/ButtonFrom/ButtonFrom';
 import { initialState } from './Initial/initialState';
 import TextField from '../../shared/Component/textField/textField';
 import fields from '../../shared/Component/textField/fields';
+import { getError } from '../../redux/auth/auth-selectors';
+
 ///ICON
 import { MdEmail } from 'react-icons/md';
 import { AiFillLock } from 'react-icons/ai';
 import { FaUser } from 'react-icons/fa';
-///
-import { getError } from '../../redux/auth/auth-selectors';
 
-import { NavLink } from 'react-router-dom';
+///STYLE
+import Style from './RegistrationForm.module.scss';
+
 
 const RegistrationForm = () => {
   const [stateRegistr, setStateRegistr] = useState(initialState);

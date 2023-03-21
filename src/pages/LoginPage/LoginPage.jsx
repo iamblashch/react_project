@@ -1,6 +1,7 @@
-import styles from '../LoginPage/LoginPage.module.scss';
 import loginImg from '../../assets/images/login-img.png';
 import LoginForm from "../../components/LoginForm/LoginForm"
+
+import styles from '../LoginPage/LoginPage.module.scss';
 
 const LoginPage = () => {
  

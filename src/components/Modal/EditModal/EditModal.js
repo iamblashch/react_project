@@ -1,18 +1,20 @@
-import { Modal } from 'components/Modal/Modal';
-import { toggleEditModal } from 'redux/modal/modalSlice';
-import styled from './EditModal.module.scss';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Datetime from 'react-datetime';
+
+import { Modal } from 'components/Modal/Modal';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { IconContext } from 'react-icons';
 import { GrClose } from 'react-icons/gr';
 import { MdDateRange } from 'react-icons/md';
-import { useDispatch, useSelector } from 'react-redux';
-import financeSelectors from 'redux/finances/financial-selectors';
 import moment from 'moment';
+
+import { toggleEditModal } from 'redux/modal/modalSlice';
+import financeSelectors from 'redux/finances/financial-selectors';
 import { editTransaction } from 'redux/finances/finances-operations';
 
 import 'react-datetime/css/react-datetime.css';
+import styled from './EditModal.module.scss';
 
 const handleAmount = value => {
   if (!value || Number.isNaN(Number(value))) return value;

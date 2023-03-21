@@ -1,20 +1,24 @@
 import { useState, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Datetime from "react-datetime";
+
+import ModalSelect from "../ModalSelect/ModalSelect";
+import {Modal} from "components/Modal/Modal";
+
+import { toggleModalAddTransaction } from "redux/modal/modalSlice";
+import financeSelectors from "redux/finances/financial-selectors";
+import { addTransaction } from 'redux/finances/finances-operations';
+
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { IconContext } from "react-icons";
 import { GrClose } from "react-icons/gr";
 import { MdDateRange } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
-import { toggleModalAddTransaction } from "redux/modal/modalSlice";
-import financeSelectors from "redux/finances/financial-selectors";
-import { addTransaction } from 'redux/finances/finances-operations';
-import {Modal} from "components/Modal/Modal";
-import ModalSelect from "../ModalSelect/ModalSelect";
 import moment from "moment";
 import * as Yup from 'yup'; 
+import { toast } from "react-toastify";
+
 import "react-datetime/css/react-datetime.css";
 import styled from "./ModalAddTransaction.module.scss";
-import { toast } from "react-toastify";
 
 const validationSchema = Yup.object().shape({
   type: Yup.string()
