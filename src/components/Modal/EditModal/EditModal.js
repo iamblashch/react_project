@@ -13,6 +13,7 @@ import moment from "moment";
 import { editTransaction } from 'redux/finances/finances-operations';
 
 import "react-datetime/css/react-datetime.css";
+import { initialState } from 'components/RegistrationForm/Initial/initialState';
 
 const handleAmount = (value) => {
   if (!value || Number.isNaN(Number(value))) return value;
@@ -34,18 +35,15 @@ const valid = function (current) {
   const tommorow = moment().subtract(0, "day");
   return current.isBefore(tommorow);
 };
-export const EditModal = (id) => {
-  console.log('id :>> ', id);
+export const EditModal = ({editItem}) => {
+const {id,comment,amout} = editItem
+
   const dispatch = useDispatch();
-
+  const items = useSelector(financeSelectors.getFilteredData); 
   const categories = useSelector(financeSelectors.getCategories);
-
+  const startDate = new Date();
   const [chooseType] = useState(false);
   const [type] = useState("EXPENSE");
-
-  const startDate = new Date();
-
-
   const incomeCategory = categories?.find(
     (category) => category.type === "INCOME"
   );
@@ -54,12 +52,10 @@ export const EditModal = (id) => {
     dispatch(toggleEditModal());
   };
 
-  const onEditTransactions = id => {
+  const onEditTransactions = () => {
     dispatch(editTransaction(id))
 
   }
-
-
 
   return (
     <Modal closeModal={isCloseModal}>
@@ -75,9 +71,10 @@ export const EditModal = (id) => {
           initialValues={{
             type: type,
             amount: "",
-            comment: "",
+            // comment: "",
             categoryId: "",
             transactionDate: startDate,
+
           }}
           enableReinitialize
           validateOnBlur
@@ -163,16 +160,17 @@ export const EditModal = (id) => {
                 <Field
                   name="comment"
                   type="text"
-                  placeholder="Comment"
+                  placeholder={comment}
                   as="textarea"
                   className={styled.comment}
+                  value = {comment}
                 />
                 {errors.comment && touched.comment && (
                   <div className={styled.commentError}>{errors.comment}</div>
                 )}
               </div>
               <div className={styled.btnWrapper}>
-                <button type='submit' className={styled.btnSubmit} onClick = {onEditTransactions} >
+                <button type='submit' className={styled.btnSubmit} onClick = {()=>{onEditTransactions()}} >
                   SAVE
                 </button>
                 <button

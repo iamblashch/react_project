@@ -14,7 +14,7 @@ const AuthLayout = ({children}) => {
             dispatch(getCategories())
         }
         
-    }, [token])
+    }, [dispatch,token])
 
     useEffect(()=> {
         dispatch(current())

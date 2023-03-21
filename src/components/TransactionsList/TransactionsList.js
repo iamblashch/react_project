@@ -4,7 +4,7 @@ import { allTransactions } from 'redux/finances/finances-operations';
 import { deleteTransaction } from 'redux/finances/finances-operations';
 import globalSelectors from 'redux/modal/modal-selectors';
 import financeSelectors from 'redux/finances/financial-selectors';
-
+import { useState } from 'react';
 import { BiPencil } from 'react-icons/bi';
 import styles from '../TransactionsList/TransactionsList.module.scss';
 import { useEffect } from 'react';
@@ -18,6 +18,7 @@ export const TransactionsList = () => {
   const dispatch = useDispatch();
   const items = useSelector(financeSelectors.getFilteredData);
   const modalOpen = useSelector(globalSelectors.getIsEditModal);
+  const [editItem, setEditItem] = useState({});
 
   useEffect(() => {
     dispatch(allTransactions());
@@ -33,14 +34,15 @@ export const TransactionsList = () => {
   // const isOpenModal = () => {
   //   dispatch(toggleEditModal());
   // };
-  const isOpenModal = id => {
+  const isOpenModal =(item) => {
     dispatch(toggleEditModal());
-    dispatch(editTransaction(id))
+    setEditItem(item)
   };
 
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-width: 768px)',
   });
+
   const elements = items?.map(
     ({ id, type, transactionDate, category, comment, amount }) => {
       return (
@@ -69,7 +71,9 @@ export const TransactionsList = () => {
             </button>
             <button
               key={id}
-              onClick={isOpenModal}
+              onClick={() =>
+                isOpenModal({ id, type, transactionDate, category, comment, amount})
+              }
               className={styles.mobailTrItem__btnEdit}
             >
               <BiPencil />
@@ -164,7 +168,6 @@ export const TransactionsList = () => {
           </div>
         </div>
       )}
-      {/* //Mobile version */}
       {!isDesktopOrLaptop && (
         <div>
           {elements.length > 0 ? (
@@ -183,7 +186,7 @@ export const TransactionsList = () => {
           </ul>
         </div>
       )}
-      {modalOpen && <EditModal id = {this.id} />}
+      {modalOpen && <EditModal editItem ={editItem}/>}
     </>
   );
 };
