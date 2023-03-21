@@ -23,5 +23,4 @@ const rootReducer = combineReducers({
     global: globalReducer,
 
 })
-
 export default rootReducer;
