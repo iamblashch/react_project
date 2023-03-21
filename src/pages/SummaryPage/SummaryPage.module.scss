@@ -27,6 +27,7 @@
   }
   
   .val {
+    display: none;
     @media screen and (min-width: 768px) {
       width: 336px;
       height: 182px;
@@ -35,6 +36,7 @@
       margin-left: auto;
       margin-top: 32px;
       margin-right: 32px;
+      display: block;
     }
     @media screen and (min-width: 1280px) {
       width: 395px;
