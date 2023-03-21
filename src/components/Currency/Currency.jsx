@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { fetchCurrency } from 'shared/api/currency';
+import { fetchCurrency } from '../shared/api/currency';
 import useLocalStorage from '../../hooks/useLocalStorage';
 // import { fetchCurrency } from '../../shared/api/currency'; 
 

@@ -66,7 +66,6 @@ export const deleteTransaction = createAsyncThunk(
 export const editTransaction = createAsyncThunk(
   'transactions/editTransaction',
   async (data, { rejectWithValue }) => {
-    console.log('data :>> ', data);
     try {
       const result = await api.editTransaction(data);
       return result;
