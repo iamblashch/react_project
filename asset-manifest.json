@@ -1,9 +1,12 @@
 {
   "files": {
-    "main.css": "/react_project/static/css/main.1c901fca.css",
-    "main.js": "/react_project/static/js/main.d33ee936.js",
+    "main.css": "/react_project/static/css/main.526f96c7.css",
+    "main.js": "/react_project/static/js/main.e30a54a9.js",
     "static/css/304.4c820d4c.chunk.css": "/react_project/static/css/304.4c820d4c.chunk.css",
     "static/js/304.a5c800dc.chunk.js": "/react_project/static/js/304.a5c800dc.chunk.js",
+    "static/css/465.9e8eb66c.chunk.css": "/react_project/static/css/465.9e8eb66c.chunk.css",
+    "static/js/465.52ba8acb.chunk.js": "/react_project/static/js/465.52ba8acb.chunk.js",
+    "static/js/192.64f8994a.chunk.js": "/react_project/static/js/192.64f8994a.chunk.js",
     "static/media/Circe-Bold.otf": "/react_project/static/media/Circe-Bold.3829a43ce57f35080843.otf",
     "static/media/CRC35.otf": "/react_project/static/media/CRC35.9b873950dc2ae3209c61.otf",
     "static/media/tablet_img_bg.png": "/react_project/static/media/tablet_img_bg.77ad57d6e5fa82f7e29f.png",
@@ -17,13 +20,16 @@
     "index.html": "/react_project/index.html",
     "static/media/plus.svg": "/react_project/static/media/plus.470177ffd2c25a566ca0.svg",
     "static/media/minus.svg": "/react_project/static/media/minus.8385fca6b179fae335b7.svg",
-    "main.1c901fca.css.map": "/react_project/static/css/main.1c901fca.css.map",
-    "main.d33ee936.js.map": "/react_project/static/js/main.d33ee936.js.map",
+    "main.526f96c7.css.map": "/react_project/static/css/main.526f96c7.css.map",
+    "main.e30a54a9.js.map": "/react_project/static/js/main.e30a54a9.js.map",
     "304.4c820d4c.chunk.css.map": "/react_project/static/css/304.4c820d4c.chunk.css.map",
-    "304.a5c800dc.chunk.js.map": "/react_project/static/js/304.a5c800dc.chunk.js.map"
+    "304.a5c800dc.chunk.js.map": "/react_project/static/js/304.a5c800dc.chunk.js.map",
+    "465.9e8eb66c.chunk.css.map": "/react_project/static/css/465.9e8eb66c.chunk.css.map",
+    "465.52ba8acb.chunk.js.map": "/react_project/static/js/465.52ba8acb.chunk.js.map",
+    "192.64f8994a.chunk.js.map": "/react_project/static/js/192.64f8994a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1c901fca.css",
-    "static/js/main.d33ee936.js"
+    "static/css/main.526f96c7.css",
+    "static/js/main.e30a54a9.js"
   ]
 }
