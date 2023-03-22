@@ -1,15 +1,15 @@
-import { useState,useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 
 import { allTransactions } from 'redux/finances/finances-operations';
 import { deleteTransaction } from 'redux/finances/finances-operations';
-import globalSelectors from 'redux/modal/modal-selectors';
+// import globalSelectors from 'redux/modal/modal-selectors';
 import financeSelectors from 'redux/finances/financial-selectors';
-import { toggleEditModal } from 'redux/modal/modalSlice';
+// import { toggleEditModal } from 'redux/modal/modalSlice';
 
-import { BiPencil } from 'react-icons/bi';
-import { EditModal } from 'components/Modal/EditModal/EditModal';
+// import { BiPencil } from 'react-icons/bi';
+// import { EditModal } from 'components/Modal/EditModal/EditModal';
 
 import styles from '../TransactionsList/TransactionsList.module.scss';
 import loginImg from '../../assets/images/login-img.png';
@@ -17,8 +17,8 @@ import loginImg from '../../assets/images/login-img.png';
 export const TransactionsList = () => {
   const dispatch = useDispatch();
   const items = useSelector(financeSelectors.getFilteredData);
-  const modalOpen = useSelector(globalSelectors.getIsEditModal);
-  const [editItem, setEditItem] = useState({});
+  // const modalOpen = useSelector(globalSelectors.getIsEditModal);
+  // const [editItem, setEditItem] = useState({});
 
   useEffect(() => {
     dispatch(allTransactions());
@@ -34,10 +34,10 @@ export const TransactionsList = () => {
   // const isOpenModal = () => {
   //   dispatch(toggleEditModal());
   // };
-  const isOpenModal =(item) => {
-    dispatch(toggleEditModal());
-    setEditItem(item)
-  };
+  // const isOpenModal = item => {
+  //   dispatch(toggleEditModal());
+  //   setEditItem(item);
+  // };
 
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-width: 768px)',
@@ -69,15 +69,22 @@ export const TransactionsList = () => {
             >
               Delete
             </button>
-            <button
+            {/* <button
               key={id}
               onClick={() =>
-                isOpenModal({ id, type, transactionDate, category, comment, amount})
+                isOpenModal({
+                  id,
+                  type,
+                  transactionDate,
+                  category,
+                  comment,
+                  amount,
+                })
               }
               className={styles.mobailTrItem__btnEdit}
             >
               <BiPencil />
-            </button>
+            </button> */}
           </td>
         </tr>
       );
@@ -86,41 +93,64 @@ export const TransactionsList = () => {
   const elementsMobile = items?.map(
     ({ id, type, transactionDate, category, comment, amount }) => {
       return (
-        <ul key={id} className={styles.mobailTrItem__list}>
-          <li className={styles.mobailTrItem__row}>
-            <span className={styles.mobailTrItem__cell}>Data</span>
-            <span className={styles.mobailTrItem__cell_value}>
-              {transactionDate}
-            </span>
-          </li>
-          <li className={styles.mobailTrItem__row}>
-            <span className={styles.mobailTrItem__cell}>Type</span>
-            <span className={styles.mobailTrItem__cell_value}>{type}</span>
-          </li>
-          <li className={styles.mobailTrItem__row}>
-            <span className={styles.mobailTrItem__cell}>Category</span>
-            <span className={styles.mobailTrItem__cell_value}>{category}</span>
-          </li>
-          <li className={styles.mobailTrItem__row}>
-            <span className={styles.mobailTrItem__cell}>Comment</span>
-            <span className={styles.mobailTrItem__cell_value}>{comment}</span>
-          </li>
-          <li className={styles.mobailTrItem__row}>
-            <span className={styles.mobailTrItem__cell}>Sum</span>
-            <span className={styles.mobailTrItem__cell_value_EXPENSE}>
-              {amount}
-            </span>
-          </li>
-          <li className={styles.mobailTrItem__row}>
-            <button className={styles.mobailTrItem__btnDelete}  onClick={() => {
-                onDeleteContact(id);
-              }}>Delete</button>
-            <button key={id} className={styles.mobailTrItem__btnEdit}>
-              <BiPencil />
-              Edit
-            </button>
-          </li>
-        </ul>
+        <li
+          className={
+            type === 'EXPENSE'
+              ? styles.mobailTrItem_EXPENSE
+              : styles.mobailTrItem_INCOME
+          }
+        >
+          <ul key={id} className={styles.mobailTrItem__list}>
+            <li className={styles.mobailTrItem__row}>
+              <span className={styles.mobailTrItem__cell}>Data</span>
+              <span className={styles.mobailTrItem__cell_value}>
+                {transactionDate}
+              </span>
+            </li>
+            <li className={styles.mobailTrItem__row}>
+              <span className={styles.mobailTrItem__cell}>Type</span>
+              <span className={styles.mobailTrItem__cell_value}>
+                {type !== 'EXPENSE' ? '+' : '-'}
+              </span>
+            </li>
+            <li className={styles.mobailTrItem__row}>
+              <span className={styles.mobailTrItem__cell}>Category</span>
+              <span className={styles.mobailTrItem__cell_value}>
+                {category}
+              </span>
+            </li>
+            <li className={styles.mobailTrItem__row}>
+              <span className={styles.mobailTrItem__cell}>Comment</span>
+              <span className={styles.mobailTrItem__cell_value}>{comment}</span>
+            </li>
+            <li className={styles.mobailTrItem__row}>
+              <span className={styles.mobailTrItem__cell}>Sum</span>
+              <span
+                className={
+                  type === 'EXPENSE'
+                    ? styles.tableData_EXPENSE
+                    : styles.tableData_INCOME
+                }
+              >
+                {amount}
+              </span>
+            </li>
+            <li className={styles.mobailTrItem__row}>
+              <button
+                className={styles.mobailTrItem__btnDelete}
+                onClick={() => {
+                  onDeleteContact(id);
+                }}
+              >
+                Delete
+              </button>
+              {/* <button key={id} className={styles.mobailTrItem__btnEdit}>
+                <BiPencil />
+                Edit
+              </button> */}
+            </li>
+          </ul>
+        </li>
       );
     }
   );
@@ -162,7 +192,7 @@ export const TransactionsList = () => {
               <div>
                 {' '}
                 <h1 id="1" style={{ textAlign: 'center', marginTop: 30 }}>
-                You're a bankrupt, go study at GoIT
+                  You're a bankrupt, go study at GoIT
                 </h1>{' '}
                 <img src={loginImg} alt="boy" className={styles.img} />
               </div>
@@ -183,12 +213,10 @@ export const TransactionsList = () => {
               <img src={loginImg} alt="boy" className={styles.img} />
             </div>
           )}
-          <ul className={styles.mobailTrList}>
-            <li className={styles.mobailTrItem_EXPENSE}>{elementsMobile}</li>
-          </ul>
+          <ul className={styles.mobailTrList}>{elementsMobile}</ul>
         </div>
       )}
-      {modalOpen && <EditModal editItem ={editItem}/>}
+      {/* {modalOpen && <EditModal editItem={editItem} />} */}
     </>
   );
 };
