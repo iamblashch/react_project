@@ -10,7 +10,7 @@ import DiagramTab from 'components/DiagramTab/DiagramTab';
 
 import css from './SummaryPage.module.scss';
 
-export const SummaryPage = () => {
+const SummaryPage = () => {
   const showModal = useSelector(globalSelectors.getIsModalAddTransaction);
   return (
     <>
@@ -37,3 +37,4 @@ export const SummaryPage = () => {
     </>
   );
 };
+export default SummaryPage
