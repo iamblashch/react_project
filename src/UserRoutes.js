@@ -13,8 +13,6 @@ import Loader from './components/Loader/Loader';
 const SummaryPage = lazy(() => import('pages/SummaryPage/SummaryPage'));
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 
-
-
 const UserRoutes = () => {
   return (
     <Suspense fallback={<Loader />}>
@@ -26,11 +24,11 @@ const UserRoutes = () => {
         </Route>
 
         <Route element={<PublicRoute />}>
-          <Route path='/login' element={<LoginPage />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegistrationPage />} />
         </Route>
+        <Route path="*" element={NotFoundPage} />
       </Routes>
-      <Route path='*' element = {NotFoundPage}/>
     </Suspense>
   );
 };
