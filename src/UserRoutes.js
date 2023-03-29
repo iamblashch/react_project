@@ -19,8 +19,8 @@ const UserRoutes = () => {
       <Routes>
         <Route element={<PrivateRoute />}>
           <Route path="/" element={<DashboardPage />} />
-          <Route path="/diagram" element={<SummaryPage />} />
-          <Route path="/currency" element={<CurrencyPage />} />
+          <Route path="diagram" element={<SummaryPage />} />
+          <Route path="currency" element={<CurrencyPage />} />
         </Route>
 
         <Route element={<PublicRoute />}>
