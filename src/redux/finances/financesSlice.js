@@ -12,7 +12,7 @@ import { login, register } from '../auth/auth-operations';
 
 const initialState = {
   data: [],
-  totalBalance: null,
+  totalBalance: 0,
   summary: null,
   error: null,
   categories: null,
