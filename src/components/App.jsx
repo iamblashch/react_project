@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 
 
 import AuthLayout  from './AuthLayout/AuthLoyout';
-import {UserRoutes} from '../UserRoutes'
+import UserRoutes from '../UserRoutes'
 
 export const App = () => {
   return (

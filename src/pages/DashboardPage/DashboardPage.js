@@ -13,7 +13,7 @@ import globalSelectors from '../../redux/modal/modal-selectors';
 
 import css from './DashboardPage.module.scss';
 
-export const DashboardPage = () => {
+const DashboardPage = () => {
   const isDesktopOrLaptop = useMediaQuery({
     query: '(max-width: 767px)',
   });
@@ -48,3 +48,5 @@ export const DashboardPage = () => {
     </>
   );
 };
+
+export default DashboardPage

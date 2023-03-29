@@ -1,20 +1,17 @@
 import { lazy, Suspense } from 'react';
-import Loader from './components/Loader/Loader';
 import { Route, Routes } from 'react-router-dom';
 
-import LoginPage from './pages/LoginPage/LoginPage';
-import { DashboardPage } from './pages/DashboardPage/DashboardPage';
 import { PublicRoute } from 'components/PublicRoute/PublicRoute';
 import { PrivateRoute } from 'components/PrivateRoute/PrivateRoute';
-// import  SummaryPage  from './pages/SummaryPage/SummaryPage';
-import { CurrencyPage } from 'pages/CurrencyPage/CurrencyPage';
+import DashboardPage from 'pages/DashboardPage/DashboardPage';
+import CurrencyPage from 'pages/CurrencyPage/CurrencyPage';
+import LoginPage from 'pages/LoginPage/LoginPage';
+import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
+import Loader from './components/Loader/Loader';
 
-const RegistrationPage = lazy(() =>
-  import('pages/RegistrationPage/RegistrationPage')
-);
 const SummaryPage = lazy(() => import('pages/SummaryPage/SummaryPage'));
 
-export const UserRoutes = () => {
+const UserRoutes = () => {
   return (
     <Suspense fallback={<Loader />}>
       <Routes>
@@ -32,3 +29,5 @@ export const UserRoutes = () => {
     </Suspense>
   );
 };
+
+export default UserRoutes;
