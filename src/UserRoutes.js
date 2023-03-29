@@ -5,11 +5,15 @@ import { PublicRoute } from 'components/PublicRoute/PublicRoute';
 import { PrivateRoute } from 'components/PrivateRoute/PrivateRoute';
 import DashboardPage from 'pages/DashboardPage/DashboardPage';
 import CurrencyPage from 'pages/CurrencyPage/CurrencyPage';
-import LoginPage from 'pages/LoginPage/LoginPage';
+// import LoginPage from 'pages/LoginPage/LoginPage';
 import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
+import NotFoundPage from 'pages/NotFoundPage/NotFoundPage';
 import Loader from './components/Loader/Loader';
 
 const SummaryPage = lazy(() => import('pages/SummaryPage/SummaryPage'));
+const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
+
+
 
 const UserRoutes = () => {
   return (
@@ -22,10 +26,11 @@ const UserRoutes = () => {
         </Route>
 
         <Route element={<PublicRoute />}>
-          <Route path="/login" element={<LoginPage />} />
+          <Route path='/login' element={<LoginPage />} />
           <Route path="/register" element={<RegistrationPage />} />
         </Route>
       </Routes>
+      <Route path='*' element = {NotFoundPage}/>
     </Suspense>
   );
 };
